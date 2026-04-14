@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PilotForge — AI Strategy in Action | Real Pilot Questions, Real Answers</title>
+  <meta name="description" content="See how PilotForge's AI thinks through real pilot strategy questions — reserve optimization, green slip timing, bucket management, and contract analysis.">
+  <link rel="canonical" href="https://pilotforge.ltd/strategy.html">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f8f9fa;
+      color: #1a1a2e;
+      line-height: 1.7;
+    }
+    .header {
+      background: linear-gradient(135deg, #003366 0%, #001a33 100%);
+      color: white;
+      padding: 48px 24px;
+      text-align: center;
+    }
+    .header h1 { font-size: 2.2rem; margin-bottom: 12px; }
+    .header p { opacity: 0.85; max-width: 600px; margin: 0 auto; font-size: 1.1rem; }
+    .back-link { display: inline-block; margin: 24px; color: #003366; text-decoration: none; font-weight: 600; }
+    .back-link:hover { text-decoration: underline; }
+
+    .conversation {
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 0 24px;
+    }
+    .conv-title {
+      font-size: 1.4rem;
+      color: #003366;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+    .conv-subtitle {
+      color: #888;
+      margin-bottom: 24px;
+      font-size: 0.95rem;
+    }
+    .msg {
+      padding: 16px 20px;
+      border-radius: 16px;
+      margin-bottom: 12px;
+      max-width: 85%;
+      font-size: 0.95rem;
+    }
+    .msg.pilot {
+      background: #DCF8C6;
+      margin-left: auto;
+      border-bottom-right-radius: 4px;
+    }
+    .msg.atlas {
+      background: white;
+      border: 1px solid #e0e0e0;
+      border-bottom-left-radius: 4px;
+    }
+    .msg .sender {
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: #888;
+      margin-bottom: 4px;
+    }
+    .msg.atlas .sender { color: #003366; }
+    .divider {
+      border: none;
+      border-top: 2px solid #e8e8e8;
+      margin: 48px 0;
+    }
+    .takeaway {
+      background: #003366;
+      color: white;
+      padding: 20px 24px;
+      border-radius: 12px;
+      margin: 24px 0;
+      font-size: 0.95rem;
+    }
+    .takeaway strong { color: #C8102E; }
+    .cta-section {
+      text-align: center;
+      padding: 60px 24px;
+      background: white;
+    }
+    .cta-section h2 { color: #003366; margin-bottom: 16px; font-size: 1.6rem; }
+    .cta-section p { color: #666; margin-bottom: 24px; }
+    .cta-btn {
+      display: inline-block;
+      background: #C8102E;
+      color: white;
+      padding: 16px 40px;
+      border-radius: 8px;
+      font-size: 1.15rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    footer {
+      background: #003366;
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      padding: 24px;
+      font-size: 0.85rem;
+    }
+    footer a { color: white; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🧠 AI Strategy in Action</h1>
+    <p>Real questions from real pilots. See how Atlas thinks through schedule strategy, reserve optimization, and contract analysis — step by step.</p>
+  </div>
+
+  <a href="/" class="back-link">← Back to PilotForge</a>
+
+  <!-- Conversation 1: Reserve GS Hunting -->
+  <div class="conversation">
+    <div class="conv-title">Reserve Green Slip Strategy</div>
+    <div class="conv-subtitle">A reserve FO planning May X-day GS pickups</div>
+
+    <div class="msg pilot">
+      <div class="sender">Pilot</div>
+      I bid X-days May 20-27. What GS trips fit those windows?
+    </div>
+
+    <div class="msg atlas">
+      <div class="sender">Atlas</div>
+      Your May 20-27 X-days are your <strong>prime GS window</strong> — here's what fits:<br><br>
+      <strong>Bucket on those dates:</strong><br>
+      • May 20: 24.7h used → 75.3h available<br>
+      • May 22: 15.4h used → 84.6h available<br>
+      • May 25+: 0.0h used → 100h available<br><br>
+      The bucket is wide open. You can fit virtually anything.<br><br>
+      <strong>Best play:</strong> A 6-day reporting May 20 or 21 maximizes credit in one shot (~33h). As a GS on X-days, that's single pay no credit <strong>on top of</strong> your reserve guarantee — pure upside at your hourly rate. That's roughly <strong>$9,400 additional pay</strong> above guarantee for one trip.<br><br>
+      <strong>Double-stack option:</strong> Two 3-day trips (May 20-22 + May 25-27) would yield ~30h total GS pay — similar value, more flexibility if the right 6-day isn't available.
+    </div>
+
+    <div class="takeaway">
+      <strong>What happened:</strong> Atlas projected the pilot's rolling 100 bucket forward to May 20-27, identified available room, calculated GS pay at the pilot's exact hourly rate, and recommended optimal trip lengths — all in seconds.
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Conversation 2: Day-by-Day Bucket Analysis -->
+  <div class="conversation">
+    <div class="conv-title">Day-by-Day Bucket Fit Analysis</div>
+    <div class="conv-subtitle">Can a specific rotation fit without busting FAR 117?</div>
+
+    <div class="msg pilot">
+      <div class="sender">Pilot</div>
+      If my May 2-3 obligation goes away, can I fit rotation A129 (6-day, Apr 30 - May 5, 32h block) into my bucket?
+    </div>
+
+    <div class="msg atlas">
+      <div class="sender">Atlas</div>
+      Let me check this day by day — the rolling 100 is a sliding window, so hours aging off matter:<br><br>
+      • Apr 30: 90.3h base + 0h A129 = 90.3h ✅<br>
+      • May 1: 81.5h base + 7.5h cumulative = 89.0h ✅<br>
+      • May 2: 81.5h base + 16.5h cumulative = 98.0h ✅ (tight!)<br>
+      • May 3: 71.3h base + 24.5h cumulative = 95.8h ✅<br>
+      • May 4: 63.3h base + 32.0h cumulative = 95.3h ✅<br><br>
+      <strong>It fits.</strong> Peak is 98.0h on May 2 — 2h margin. Your old A157 hours drop off May 2-7, creating room exactly as A129's block time accumulates.<br><br>
+      <strong>Strategic bonus:</strong> This fills your bucket to ~95h going into May work days. Scheduling can't assign you anything that would bust 100h — which means you sit on guarantee. Premium GS pay + guarantee protection in one move.
+    </div>
+
+    <div class="takeaway">
+      <strong>What happened:</strong> A simple "total hours" calculation would say 90h + 32h = 122h = bust. Atlas knew better — it checked each day individually, accounting for hours aging off the rolling window. The trip actually fits with 2h margin. That's the difference between missing a $9,000 premium opportunity and grabbing it.
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Conversation 3: Contract Violation -->
+  <div class="conversation">
+    <div class="conv-title">Rerouting Rights — Know Your Contract</div>
+    <div class="conv-subtitle">A pilot rerouted on day 3 of a 5-day trip</div>
+
+    <div class="msg pilot">
+      <div class="sender">Pilot</div>
+      I'm on day 3 of a 5-day. Yesterday they rerouted me to DAL instead of CHA. This morning they left a CNO trying to reroute me again instead of returning me to my original rotation. What are my options?
+    </div>
+
+    <div class="msg atlas">
+      <div class="sender">Atlas</div>
+      Your instinct is right. <strong>PWA Section 23 L. (Rerouting)</strong> governs this:<br><br>
+      After a reroute, the Company must either:<br>
+      1. <strong>Return you to your original rotation</strong> at the earliest opportunity, or<br>
+      2. <strong>Release you</strong> if they cannot return you<br><br>
+      They <strong>cannot chain reroutes.</strong> What you're describing — rerouted to DAL, now rerouted again — is exactly the scenario the PWA protects against.<br><br>
+      <strong>Your options:</strong><br>
+      • Do NOT acknowledge the CNO yet<br>
+      • Document everything — screenshots, timestamps<br>
+      • Contact your ALPA rep for real-time support<br><br>
+      Per <strong>Section 4 F. (Rotation Guarantee)</strong>, your pay is protected regardless — you're entitled to the greater of your original scheduled rotation or what you actually fly.
+    </div>
+
+    <div class="takeaway">
+      <strong>What happened:</strong> A stressed pilot in a hotel room needed a clear answer fast. Atlas cited the exact PWA sections, laid out specific actions in priority order, and flagged the pay protection angle most pilots wouldn't think of in the moment. No searching through a 500-page contract required.
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Conversation 4: New Hire -->
+  <div class="conversation">
+    <div class="conv-title">New Hire — Understanding FDP Limits</div>
+    <div class="conv-subtitle">A first-year pilot learning the rules</div>
+
+    <div class="msg pilot">
+      <div class="sender">Pilot</div>
+      I'm new — what's my FDP limit for a 3-leg day reporting at 0600?
+    </div>
+
+    <div class="msg atlas">
+      <div class="sender">Atlas</div>
+      Per <strong>FAR §117.13, Table B</strong>, acclimated, 0500-0559 report window with 3 flight segments:<br><br>
+      <strong>Your FDP limit: 12.0 hours</strong><br><br>
+      That means if you report at 0600, your FDP window closes at 1800.<br><br>
+      <strong>Extension available:</strong> Per §117.19, the PIC may extend FDP by up to 2 additional hours (to 14.0h) with agreement from all flightcrew members, if the PIC determines the crew is fit.<br><br>
+      <strong>Key things to know as a new hire:</strong><br>
+      • FDP starts at report time, not block out<br>
+      • FDP includes taxi, flight, and post-flight duties<br>
+      • The segment count matters — more legs = lower FDP limit<br>
+      • If you're ever unsure, you have the right to decline an extension
+    </div>
+
+    <div class="takeaway">
+      <strong>What happened:</strong> Instead of digging through FAR 117 tables, the new pilot got a clear answer with the specific regulation cited, the extension rules explained, and practical tips for their first year. Atlas is like having an experienced captain in your phone — available 24/7.
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Ready to fly smarter?</h2>
+    <p>3 free questions. No app to download. Just text.</p>
+    <a href="https://wa.me/18335736743?text=Hi" class="cta-btn">Try Atlas Free →</a>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 PilotForge LLC | <a href="/">Home</a> | <a href="privacy.html">Privacy</a> | <a href="terms.html">Terms</a></p>
+    <p>⚠️ Informational reference only — not operational guidance.</p>
+  </footer>
+</body>
+</html>
