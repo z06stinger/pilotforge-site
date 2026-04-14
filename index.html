@@ -39,10 +39,11 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #f8f9fa;
-      color: #1a1a2e;
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+      background: #ffffff;
+      color: #1d1d1f;
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
     .hero {
       background: linear-gradient(135deg, #003366 0%, #001a33 100%);
@@ -95,9 +96,9 @@
     }
     .social-proof strong { color: white; }
 
-    .section { max-width: 960px; margin: 60px auto; padding: 0 24px; }
-    .section h2 { font-size: 1.8rem; text-align: center; margin-bottom: 16px; color: #003366; }
-    .section .subtitle { text-align: center; color: #666; margin-bottom: 40px; font-size: 1.05rem; }
+    .section { max-width: 960px; margin: 80px auto; padding: 0 24px; }
+    .section h2 { font-size: 2.2rem; text-align: center; margin-bottom: 16px; color: #1d1d1f; font-weight: 700; letter-spacing: -0.5px; }
+    .section .subtitle { text-align: center; color: #86868b; margin-bottom: 48px; font-size: 1.15rem; max-width: 600px; margin-left: auto; margin-right: auto; }
 
     /* Examples section */
     .examples {
@@ -132,14 +133,16 @@
       gap: 24px;
     }
     .feature-card {
-      background: white;
-      border-radius: 12px;
-      padding: 28px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      background: #fbfbfd;
+      border-radius: 20px;
+      padding: 32px;
+      border: 1px solid #e8e8ed;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-    .feature-card .icon { font-size: 2rem; margin-bottom: 12px; }
-    .feature-card h3 { font-size: 1.1rem; margin-bottom: 8px; color: #003366; }
-    .feature-card p { font-size: 0.95rem; color: #555; }
+    .feature-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+    .feature-card .icon { font-size: 2.2rem; margin-bottom: 16px; }
+    .feature-card h3 { font-size: 1.15rem; margin-bottom: 8px; color: #1d1d1f; font-weight: 600; }
+    .feature-card p { font-size: 0.95rem; color: #86868b; line-height: 1.5; }
 
     /* Pricing */
     .pricing-container {
@@ -311,6 +314,34 @@
       </div>
     </div>
     <p style="text-align:center; margin-top:20px;"><a href="strategy.html" style="color:#C8102E; font-weight:600; text-decoration:none;">See full AI strategy conversations →</a></p>
+  </div>
+
+  <!-- Input Formats -->
+  <div class="section" style="text-align:center;">
+    <h2>Send it however you have it.</h2>
+    <p class="subtitle">Atlas reads whatever you throw at it — no reformatting, no copy-paste, no special apps.</p>
+    <div style="display:flex; justify-content:center; gap:32px; flex-wrap:wrap; margin-top:40px;">
+      <div style="width:200px; text-align:center;">
+        <div style="font-size:3rem; margin-bottom:12px;">📄</div>
+        <div style="font-weight:600; font-size:1.1rem; color:#1d1d1f;">PDFs</div>
+        <div style="color:#86868b; font-size:0.9rem; margin-top:4px;">Schedule PDFs, bid packages, time cards, rotation details — drop the file, Atlas reads it.</div>
+      </div>
+      <div style="width:200px; text-align:center;">
+        <div style="font-size:3rem; margin-bottom:12px;">📸</div>
+        <div style="font-weight:600; font-size:1.1rem; color:#1d1d1f;">Screenshots</div>
+        <div style="color:#86868b; font-size:0.9rem; margin-top:4px;">Screenshot your schedule from the app and send it. Atlas extracts the data automatically.</div>
+      </div>
+      <div style="width:200px; text-align:center;">
+        <div style="font-size:3rem; margin-bottom:12px;">📷</div>
+        <div style="font-weight:600; font-size:1.1rem; color:#1d1d1f;">Photos</div>
+        <div style="color:#86868b; font-size:0.9rem; margin-top:4px;">Snap a photo of a rotation sheet, crew board, or printed schedule. Atlas reads it.</div>
+      </div>
+      <div style="width:200px; text-align:center;">
+        <div style="font-size:3rem; margin-bottom:12px;">⌨️</div>
+        <div style="font-weight:600; font-size:1.1rem; color:#1d1d1f;">Text & Voice</div>
+        <div style="color:#86868b; font-size:0.9rem; margin-top:4px;">Type your question, log flight time manually, or send a voice note. Just talk to Atlas.</div>
+      </div>
+    </div>
   </div>
 
   <!-- Features -->
