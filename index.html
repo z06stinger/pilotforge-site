@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PilotForge — AI Schedule Strategy for Airline Pilots | FAR 117, PBS Bidding, Green Slip Optimization</title>
-  <meta name="description" content="PilotForge is your AI copilot for schedule strategy. Ask questions about FAR 117, rolling 100, green slip timing, reserve optimization, and PBS bidding — all via WhatsApp. Built by pilots, for pilots.">
+  <title>PilotForge — AI Schedule Strategy for Airline Pilots</title>
+  <meta name="description" content="PilotForge is your AI copilot for schedule strategy. FAR 117, rolling 100, green slip timing, reserve optimization, and PBS bidding — all via WhatsApp.">
   <meta name="keywords" content="pilot schedule optimization, FAR 117, rolling 100, green slip, PBS bidding, reserve strategy, airline pilot tools, flight time tracking, duty time calculator, pilot pay optimization">
   <meta property="og:title" content="PilotForge — AI Schedule Strategy for Airline Pilots">
   <meta property="og:description" content="Your AI copilot for FAR 117, rolling 100, green slip timing, and reserve strategy. Ask anything via WhatsApp.">
@@ -20,6 +20,9 @@
   <meta name="twitter:image" content="https://pilotforge.ltd/og-image.png">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://pilotforge.ltd">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -27,7 +30,7 @@
     "name": "PilotForge",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "WhatsApp",
-    "description": "AI-powered schedule strategy assistant for airline pilots. FAR 117 compliance, rolling 100 tracking, green slip optimization, and PBS bid strategy.",
+    "description": "AI-powered schedule strategy assistant for airline pilots.",
     "offers": {
       "@type": "Offer",
       "price": "29.99",
@@ -37,531 +40,696 @@
   }
   </script>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
-      background: #ffffff;
-      color: #1d1d1f;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
+    :root {
+      --bg: #000000;
+      --bg-elevated: #0a0a0a;
+      --bg-card: #111111;
+      --bg-card-hover: #1a1a1a;
+      --surface: #1d1d1f;
+      --text-primary: #f5f5f7;
+      --text-secondary: #86868b;
+      --text-tertiary: #6e6e73;
+      --accent: #4a9eda;
+      --accent-hover: #5ab0f0;
+      --accent-glow: rgba(74, 158, 218, 0.12);
+      --red: #C8102E;
+      --red-hover: #e01535;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(255, 255, 255, 0.15);
+      --radius: 20px;
+      --radius-sm: 12px;
     }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Helvetica Neue', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(0, 0, 0, 0.72);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .nav-brand img {
+      height: 28px;
+      width: auto;
+      border-radius: 6px;
+    }
+    .nav-brand span {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.2px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text-primary); }
+    .nav-cta {
+      background: var(--accent) !important;
+      color: white !important;
+      padding: 6px 16px;
+      border-radius: 980px;
+      font-size: 0.82rem !important;
+      font-weight: 500 !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--accent-hover) !important; }
+
+    /* ─── HERO ─── */
     .hero {
-      background: linear-gradient(135deg, #003366 0%, #001a33 100%);
-      color: white;
-      padding: 80px 24px 60px;
+      padding: 120px 24px 80px;
       text-align: center;
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-video-container {
+      width: 200px;
+      height: auto;
+      margin: 0 auto 48px;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .hero-video-container video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .hero-eyebrow {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.02em;
+      margin-bottom: 16px;
     }
     .hero h1 {
-      font-size: 2.8rem;
+      font-size: 3.5rem;
       font-weight: 700;
-      margin-bottom: 16px;
-      letter-spacing: -0.5px;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      max-width: 800px;
     }
     .hero .tagline {
-      font-size: 1.3rem;
-      opacity: 0.9;
-      max-width: 700px;
-      margin: 0 auto 24px;
-    }
-    .hero .sub {
-      font-size: 1.05rem;
-      opacity: 0.7;
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: var(--text-secondary);
       max-width: 600px;
-      margin: 0 auto 32px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
     }
-    .cta-btn {
-      display: inline-block;
-      background: #C8102E;
-      color: white;
-      padding: 16px 40px;
-      border-radius: 8px;
-      font-size: 1.15rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: background 0.2s;
-      margin: 8px;
-    }
-    .cta-btn:hover { background: #a00d24; }
-    .cta-btn.secondary {
-      background: transparent;
-      border: 2px solid rgba(255,255,255,0.5);
-    }
-    .cta-btn.secondary:hover { border-color: white; background: rgba(255,255,255,0.1); }
-    .social-proof {
-      background: #002244;
-      color: rgba(255,255,255,0.85);
-      padding: 20px 24px;
-      text-align: center;
-      font-size: 0.95rem;
-    }
-    .social-proof strong { color: white; }
-
-    .section { max-width: 960px; margin: 80px auto; padding: 0 24px; }
-    .section h2 { font-size: 2.2rem; text-align: center; margin-bottom: 16px; color: #1d1d1f; font-weight: 700; letter-spacing: -0.5px; }
-    .section .subtitle { text-align: center; color: #86868b; margin-bottom: 48px; font-size: 1.15rem; max-width: 600px; margin-left: auto; margin-right: auto; }
-
-    /* Examples section */
-    .examples {
-      background: white;
-      border-radius: 16px;
-      padding: 40px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-      max-width: 700px;
-      margin: 0 auto 60px;
-    }
-    .example-item {
-      padding: 16px 0;
-      border-bottom: 1px solid #eee;
-    }
-    .example-item:last-child { border-bottom: none; }
-    .example-q {
-      font-weight: 600;
-      color: #003366;
-      margin-bottom: 6px;
-    }
-    .example-a {
-      color: #555;
-      font-size: 0.95rem;
-      padding-left: 16px;
-      border-left: 3px solid #C8102E;
-    }
-
-    /* Features */
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-    }
-    .feature-card {
-      background: #fbfbfd;
-      border-radius: 20px;
-      padding: 32px;
-      border: 1px solid #e8e8ed;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .feature-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
-    .feature-card .icon { font-size: 2.2rem; margin-bottom: 16px; }
-    .feature-card h3 { font-size: 1.15rem; margin-bottom: 8px; color: #1d1d1f; font-weight: 600; }
-    .feature-card p { font-size: 0.95rem; color: #86868b; line-height: 1.5; }
-
-    /* Pricing */
-    .pricing-container {
+    .hero-actions {
       display: flex;
-      gap: 24px;
+      gap: 16px;
       justify-content: center;
       flex-wrap: wrap;
-      margin-top: 40px;
     }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent);
+      color: white;
+      padding: 14px 32px;
+      border-radius: 980px;
+      font-size: 1rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: scale(1.02);
+    }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: transparent;
+      color: var(--accent);
+      padding: 14px 32px;
+      border-radius: 980px;
+      font-size: 1rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .btn-ghost:hover { color: var(--accent-hover); }
+
+    /* ─── SECTIONS ─── */
+    .section {
+      max-width: 1024px;
+      margin: 0 auto;
+      padding: 100px 24px;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .section-header .eyebrow {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
+    .section-header h2 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .section-header p {
+      color: var(--text-secondary);
+      font-size: 1.15rem;
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ─── EXAMPLES (Chat Bubbles) ─── */
+    .examples-card {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .chat-pair {
+      margin-bottom: 32px;
+    }
+    .chat-q, .chat-a {
+      padding: 16px 20px;
+      border-radius: 18px;
+      font-size: 0.92rem;
+      line-height: 1.6;
+      max-width: 85%;
+    }
+    .chat-q {
+      background: var(--accent);
+      color: white;
+      margin-left: auto;
+      margin-bottom: 10px;
+      border-bottom-right-radius: 6px;
+      font-weight: 500;
+    }
+    .chat-a {
+      background: var(--bg-card);
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+      margin-right: auto;
+      border-bottom-left-radius: 6px;
+    }
+
+    /* ─── FEATURES ─── */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    .feature-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+    }
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+    .feature-card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+    .feature-card p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ─── PRICING ─── */
     .price-card {
-      background: white;
-      border-radius: 16px;
-      padding: 40px 32px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-      width: 340px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-hover);
+      border-radius: var(--radius);
+      padding: 48px 40px;
+      max-width: 420px;
+      margin: 0 auto;
       text-align: center;
       position: relative;
     }
-    .price-card.featured {
-      border: 3px solid #003366;
-      transform: scale(1.03);
+    .price-badge {
+      display: inline-block;
+      background: var(--accent-glow);
+      color: var(--accent);
+      padding: 4px 14px;
+      border-radius: 980px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      border: 1px solid rgba(74, 158, 218, 0.2);
     }
-    .price-card .plan-name {
-      font-size: 1.3rem;
+    .price-name {
+      font-size: 1.6rem;
       font-weight: 700;
-      color: #003366;
-      margin-bottom: 8px;
+      margin-bottom: 4px;
+      letter-spacing: -0.02em;
     }
-    .price-card .price {
-      font-size: 2.8rem;
-      font-weight: 800;
-      color: #1a1a2e;
+    .price-amount {
+      font-size: 3.5rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
       margin: 16px 0 4px;
     }
-    .price-card .price span { font-size: 1rem; font-weight: 400; color: #888; }
-    .price-card .price-note { color: #888; font-size: 0.9rem; margin-bottom: 20px; }
-    .price-card ul {
+    .price-amount span {
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--text-tertiary);
+    }
+    .price-note {
+      color: var(--text-tertiary);
+      font-size: 0.88rem;
+      margin-bottom: 32px;
+    }
+    .price-features {
       list-style: none;
       text-align: left;
-      margin: 20px 0;
+      margin: 0 0 36px;
     }
-    .price-card ul li {
-      padding: 8px 0;
-      font-size: 0.95rem;
-      color: #444;
-      border-bottom: 1px solid #f0f0f0;
+    .price-features li {
+      padding: 12px 0;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
-    .price-card ul li:before {
-      content: "✓ ";
-      color: #003366;
+    .price-features li:last-child { border-bottom: none; }
+    .price-features li::before {
+      content: "✓";
+      color: var(--accent);
       font-weight: 700;
-    }
-    .popular-badge {
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #C8102E;
-      color: white;
-      padding: 4px 16px;
-      border-radius: 12px;
-      font-size: 0.8rem;
-      font-weight: 600;
+      font-size: 0.85rem;
+      flex-shrink: 0;
     }
 
-    /* Compare */
-    .compare { margin-top: 60px; }
+    /* ─── COMPARE ─── */
+    .compare-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
     .compare-table {
       width: 100%;
       border-collapse: collapse;
-      background: white;
-      border-radius: 12px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
       overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      min-width: 600px;
     }
     .compare-table th {
-      background: #003366;
-      color: white;
-      padding: 14px 16px;
+      background: var(--surface);
+      color: var(--text-secondary);
+      padding: 14px 20px;
       text-align: left;
-      font-size: 0.9rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
     }
     .compare-table td {
-      padding: 12px 16px;
-      border-bottom: 1px solid #f0f0f0;
-      font-size: 0.9rem;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.88rem;
+      color: var(--text-secondary);
     }
     .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table td:first-child { color: var(--text-primary); font-weight: 500; }
 
-    /* FAQ */
+    /* ─── FAQ ─── */
     .faq-item {
-      background: white;
-      border-radius: 12px;
-      padding: 24px;
-      margin-bottom: 16px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      border-bottom: 1px solid var(--border);
+      padding: 24px 0;
     }
+    .faq-item:last-child { border-bottom: none; }
     .faq-item h3 {
-      color: #003366;
+      font-size: 1rem;
+      font-weight: 600;
       margin-bottom: 8px;
-      font-size: 1.05rem;
+      letter-spacing: -0.01em;
     }
-    .faq-item p { color: #555; font-size: 0.95rem; }
+    .faq-item p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
 
-    footer {
-      background: #003366;
-      color: rgba(255,255,255,0.8);
+    /* ─── BOTTOM CTA ─── */
+    .bottom-cta {
       text-align: center;
-      padding: 40px 24px;
-      margin-top: 60px;
+      padding: 100px 24px 120px;
     }
-    footer a { color: white; text-decoration: underline; }
-    footer .legal { margin-top: 16px; font-size: 0.85rem; opacity: 0.7; }
-    footer .links { margin-bottom: 12px; }
-    footer .links a { margin: 0 12px; }
+    .bottom-cta h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      margin-bottom: 16px;
+    }
+    .bottom-cta p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      margin-bottom: 32px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
-    @media (max-width: 600px) {
-      .hero h1 { font-size: 2rem; }
-      .hero .tagline { font-size: 1.1rem; }
-      .price-card { width: 100%; }
-      .price-card.featured { transform: none; }
-      .examples { padding: 24px; }
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+    }
+    footer .links {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    footer a {
+      color: var(--text-tertiary);
+      text-decoration: none;
+      font-size: 0.82rem;
+      transition: color 0.2s;
+    }
+    footer a:hover { color: var(--text-secondary); }
+    footer .copy {
+      color: var(--text-tertiary);
+      font-size: 0.78rem;
+    }
+    footer .disclaimer {
+      color: var(--text-tertiary);
+      font-size: 0.75rem;
+      margin-top: 12px;
+      opacity: 0.7;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .hero { padding: 100px 20px 60px; min-height: auto; }
+      .hero h1 { font-size: 2.2rem; }
+      .hero .tagline { font-size: 1.05rem; }
+      .hero-video-container { width: 150px; margin-bottom: 36px; }
+      .section { padding: 80px 20px; }
+      .section-header h2 { font-size: 2rem; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .nav-links { gap: 16px; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .price-card { padding: 36px 28px; }
+      .bottom-cta h2 { font-size: 1.8rem; }
+      .chat-q, .chat-a { max-width: 95%; }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .feature-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
 <body>
-  <div class="hero">
-    <h1>✈️ PilotForge</h1>
-    <p class="tagline">Your AI copilot for schedule strategy, FAR 117 compliance, and pay optimization.</p>
-    <p class="sub">AI that thinks like a senior pilot — ask Atlas anything via WhatsApp. Rules, strategy, bucket math, green slip timing. Whether you're a new hire learning the ropes or a 20-year veteran optimizing pay.</p>
-    <a href="https://wa.me/18335736743?text=Hi" class="cta-btn">Start Free Trial →</a>
-    <a href="#pricing" class="cta-btn secondary">See Pricing</a>
-  </div>
 
-  <!-- New Hire Banner -->
-  <div style="background:linear-gradient(135deg, #C8102E 0%, #8B0A1E 100%); color:white; padding:40px 24px; text-align:center;">
-    <div style="max-width:700px; margin:0 auto;">
-      <div style="font-size:2rem; margin-bottom:12px;">🎓 New to the airline?</div>
-      <p style="font-size:1.15rem; opacity:0.95; margin-bottom:8px;"><strong>Atlas is like having a patient, experienced captain in your pocket — 24/7.</strong></p>
-      <p style="font-size:1rem; opacity:0.8; margin-bottom:20px;">FDP limits, rest rules, reserve procedures, pay calculations, contract sections — ask anything, anytime. No judgment, no waiting for a crew room conversation. Learn at your own pace while you build your career.</p>
-      <a href="https://wa.me/18335736743?text=Hi%20I%27m%20a%20new%20hire" style="display:inline-block; background:white; color:#C8102E; padding:12px 32px; border-radius:8px; font-weight:600; text-decoration:none; font-size:1rem;">Try It Free — New Hire Friendly →</a>
+  <!-- Nav -->
+  <nav>
+    <a href="/" class="nav-brand">
+      <img src="logo.jpg" alt="PilotForge">
+      <span>PilotForge</span>
+    </a>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="https://wa.me/18335736743?text=Hi" class="nav-cta">Get Started</a>
     </div>
-  </div>
+  </nav>
 
-  <div class="social-proof">
-    Built by an <strong>airline pilot</strong> for pilots. Powered by <strong>Anthropic's Claude</strong> — the same AI trusted by the world's leading companies. Not a chatbot. Not keyword search. <strong>Actual reasoning</strong> about your schedule.
-  </div>
-
-  <!-- Examples -->
-  <div class="section">
-    <h2>Ask Atlas Anything</h2>
-    <p class="subtitle">Real questions from real pilots — AI-powered answers in seconds. Not keyword matching. Not lookup tables. Actual reasoning about your schedule.</p>
-    <div class="examples">
-      <div class="example-item">
-        <div class="example-q">"What's my FDP limit for a 3-leg day reporting at 0600?"</div>
-        <div class="example-a">Per FAR §117.13 Table B, acclimated, 0500-0559 report: 3 segments = 12.0h FDP limit. Extension available per §117.19 up to 2 additional hours with PIC/SIC agreement.</div>
-      </div>
-      <div class="example-item">
-        <div class="example-q">"Can I fit a 6-day trip starting May 20 into my bucket?"</div>
-        <div class="example-a">Day-by-day analysis: your bucket peaks at 98.0h on May 22. The trip fits — 2h margin. Old A157 hours drop off May 2-7, creating room as the new trip's block accumulates.</div>
-      </div>
-      <div class="example-item">
-        <div class="example-q">"What are my GS options on X-days May 20-27?"</div>
-        <div class="example-a">75.3h bucket room on May 20 → fits any trip. Best play: 6-day reporting May 20 at ~$9,400 GS pay on top of guarantee. Or stack two 3-days for flexibility.</div>
-      </div>
-      <div class="example-item">
-        <div class="example-q">"I was rerouted yesterday. Today they're trying to reroute me again instead of returning me. Legal?"</div>
-        <div class="example-a">Per PWA Section 23 L., after a reroute the Company must return you to your original rotation or release you. A second reroute is not how Section 23 L. works. Don't acknowledge the CNO — call scheduling and assert your rights.</div>
-      </div>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-video-container">
+      <video autoplay muted loop playsinline>
+        <source src="logo-anim.mp4" type="video/mp4">
+        <img src="logo.jpg" alt="PilotForge Logo">
+      </video>
     </div>
-    <p style="text-align:center; margin-top:20px;"><a href="strategy.html" style="color:#C8102E; font-weight:600; text-decoration:none;">See full AI strategy conversations →</a></p>
-  </div>
+    <p class="hero-eyebrow">AI Schedule Strategy</p>
+    <h1>Your copilot<br>for every schedule decision.</h1>
+    <p class="tagline">FAR 117 compliance. Rolling 100 tracking. Green slip timing. Reserve strategy. All via WhatsApp — no app required.</p>
+    <div class="hero-actions">
+      <a href="https://wa.me/18335736743?text=Hi" class="btn-primary">Start Free Trial</a>
+      <a href="#pricing" class="btn-ghost">See pricing ›</a>
+    </div>
+  </section>
 
-  <!-- Input Formats -->
-  <div class="section" style="text-align:center;">
-    <h2>Send it however you have it.</h2>
-    <p class="subtitle">Atlas reads whatever you throw at it — no reformatting, no copy-paste, no special apps.</p>
-    <div style="display:flex; justify-content:center; gap:32px; flex-wrap:wrap; margin-top:40px;">
-      <div style="width:200px; text-align:center;">
-        <div style="font-size:3rem; margin-bottom:12px;">📄</div>
-        <div style="font-weight:600; font-size:1.1rem; color:#1d1d1f;">PDFs</div>
-        <div style="color:#86868b; font-size:0.9rem; margin-top:4px;">Schedule PDFs, bid packages, time cards, rotation details — drop the file, Atlas reads it.</div>
+  <!-- Ask Atlas -->
+  <section class="section" style="border-top: 1px solid var(--border);">
+    <div class="section-header">
+      <p class="eyebrow">Meet Atlas</p>
+      <h2>Ask anything. Get cited answers.</h2>
+      <p>Real questions from real pilots — answered in seconds.</p>
+    </div>
+    <div class="examples-card">
+      <div class="chat-pair">
+        <div class="chat-q">What's my FDP limit for a 3-leg day reporting at 0600?</div>
+        <div class="chat-a">Per FAR §117.13 Table B, acclimated, 0500-0559 report: 3 segments = 12.0h FDP limit. Extension available per §117.19 up to 2 additional hours with PIC/SIC agreement.</div>
       </div>
-      <div style="width:200px; text-align:center;">
-        <div style="font-size:3rem; margin-bottom:12px;">📸</div>
-        <div style="font-weight:600; font-size:1.1rem; color:#1d1d1f;">Screenshots</div>
-        <div style="color:#86868b; font-size:0.9rem; margin-top:4px;">Screenshot your schedule from the app and send it. Atlas extracts the data automatically.</div>
+      <div class="chat-pair">
+        <div class="chat-q">Can I fit a 6-day trip starting May 20 into my bucket?</div>
+        <div class="chat-a">Day-by-day analysis: your bucket peaks at 98.0h on May 22. The trip fits — 2h margin. Old A157 hours drop off May 2-7, creating room as the new trip's block accumulates.</div>
       </div>
-      <div style="width:200px; text-align:center;">
-        <div style="font-size:3rem; margin-bottom:12px;">📷</div>
-        <div style="font-weight:600; font-size:1.1rem; color:#1d1d1f;">Photos</div>
-        <div style="color:#86868b; font-size:0.9rem; margin-top:4px;">Snap a photo of a rotation sheet, crew board, or printed schedule. Atlas reads it.</div>
-      </div>
-      <div style="width:200px; text-align:center;">
-        <div style="font-size:3rem; margin-bottom:12px;">⌨️</div>
-        <div style="font-weight:600; font-size:1.1rem; color:#1d1d1f;">Text & Voice</div>
-        <div style="color:#86868b; font-size:0.9rem; margin-top:4px;">Type your question, log flight time manually, or send a voice note. Just talk to Atlas.</div>
+      <div class="chat-pair">
+        <div class="chat-q">I was rerouted yesterday. They're trying to reroute me again. Legal?</div>
+        <div class="chat-a">Per PWA Section 23 L., after a reroute the Company must return you to your original rotation or release you. A second consecutive reroute is not how Section 23 L. works. Don't acknowledge the CNO — call scheduling and assert your rights.</div>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- Features -->
-  <div class="section">
-    <h2>What You Get</h2>
-    <p class="subtitle">Everything a pilot needs to manage their schedule, in one WhatsApp conversation.</p>
+  <section class="section" id="features" style="border-top: 1px solid var(--border);">
+    <div class="section-header">
+      <p class="eyebrow">Capabilities</p>
+      <h2>Everything in one conversation.</h2>
+      <p>No app to download. No login to remember. Just text.</p>
+    </div>
     <div class="feature-grid">
       <div class="feature-card">
-        <div class="icon">🧠</div>
-        <h3>AI Strategy Analysis</h3>
-        <p>Reserve optimization, green slip timing, bucket management, bid strategy — AI that reasons through your schedule like an experienced line pilot. <a href="strategy.html" style="color:#C8102E;">See it in action →</a></p>
+        <div class="feature-icon">🧠</div>
+        <h3>Strategy Analysis</h3>
+        <p>Reserve optimization, green slip timing, bucket management, and bid strategy — AI that thinks like an experienced line pilot.</p>
       </div>
       <div class="feature-card">
-        <div class="icon">📋</div>
-        <h3>FAR 117 & Contract Lookup</h3>
-        <p>Instant answers with specific section citations. FAR 117, PWA, Scheduling Handbook — searchable by natural language.</p>
+        <div class="feature-icon">📋</div>
+        <h3>Contract Lookup</h3>
+        <p>Instant answers with section citations. FAR 117, PWA, Scheduling Handbook — searchable by natural language.</p>
       </div>
       <div class="feature-card">
-        <div class="icon">📊</div>
+        <div class="feature-icon">📊</div>
         <h3>Rolling 100 Tracker</h3>
-        <p>Upload your schedule, get day-by-day bucket projections with drop-off dates and green slip pickup windows.</p>
+        <p>Upload your schedule, get day-by-day bucket projections with drop-off dates and green slip windows.</p>
       </div>
       <div class="feature-card">
-        <div class="icon">💰</div>
+        <div class="feature-icon">💰</div>
         <h3>Pay Optimization</h3>
-        <p>Green slip math, premium pay calculations, reserve guarantee analysis — with actual 2026 pay rates.</p>
+        <p>Green slip math, premium pay, reserve guarantee analysis — with current pay rates.</p>
       </div>
       <div class="feature-card">
-        <div class="icon">📱</div>
+        <div class="feature-icon">📱</div>
         <h3>WhatsApp Native</h3>
-        <p>No app to download, no login to remember. Text a number, upload PDFs, get answers. Works from your phone, iPad, or layover hotel WiFi.</p>
+        <p>Works from your phone, iPad, or layover hotel WiFi. Upload PDFs, get answers. No app store.</p>
       </div>
       <div class="feature-card">
-        <div class="icon">🔒</div>
-        <h3>Your Data, Your Control</h3>
-        <p>Per-pilot data isolation. Your schedule, constraints, and strategy are private. BYOD model — you upload your own documents.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon">🎓</div>
-        <h3>Perfect for New Hires</h3>
-        <p>Just started at the airline? Atlas is like having a patient, knowledgeable captain available 24/7. Ask about FDP limits, rest rules, reserve procedures, pay calculations — learn as you go, no stupid questions.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon">⚡</div>
-        <h3>Pilot Logic, Not Just Rules</h3>
-        <p>Atlas doesn't just quote regulations — it thinks through the strategic implications. "Can I fit this trip?" becomes a day-by-day bucket analysis with pay optimization built in. <a href="strategy.html" style="color:#C8102E;">See real examples →</a></p>
+        <div class="feature-icon">🔒</div>
+        <h3>Private & Secure</h3>
+        <p>Per-pilot data isolation. Your schedule and strategy stay yours. BYOD — you upload your own documents.</p>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- Pricing -->
-  <div class="section" id="pricing">
-    <h2>Pricing</h2>
-    <p class="subtitle">One good green slip recommendation pays for a year of PilotForge.</p>
-    <div class="pricing-container">
-      <div class="price-card featured">
-        <div class="popular-badge">Most Popular</div>
-        <div class="plan-name">Atlas Standard</div>
-        <div class="price">$29.99<span>/mo</span></div>
-        <div class="price-note">Cancel anytime. 3 free queries to try.</div>
-        <ul>
-          <li>Unlimited rules & contract questions</li>
-          <li>Rolling 100 tracking & projections</li>
-          <li>Schedule uploads & bucket planning</li>
-          <li>Rotation queries from bid package</li>
-          <li>Pay calculations with 2026 rates</li>
-          <li>Constraint tracking (training, X-days, blackouts)</li>
-          <li>10 AI strategy analyses per month</li>
-          <li>WhatsApp — no app needed</li>
-        </ul>
-        <a href="https://wa.me/18335736743?text=Hi" class="cta-btn" style="display:block;">Get Started →</a>
-      </div>
+  <section class="section" id="pricing" style="border-top: 1px solid var(--border);">
+    <div class="section-header">
+      <p class="eyebrow">Pricing</p>
+      <h2>One green slip pays for a year.</h2>
     </div>
-    <p style="text-align:center; margin-top:24px; color:#888; font-size:0.9rem;">Need unlimited strategy queries? Ask us about Atlas Unlimited — coming soon.</p>
-  </div>
+    <div class="price-card">
+      <div class="price-badge">Most Popular</div>
+      <div class="price-name">Atlas Standard</div>
+      <div class="price-amount">$29.99<span> /mo</span></div>
+      <div class="price-note">Cancel anytime · 3 free queries to start</div>
+      <ul class="price-features">
+        <li>Unlimited rules & contract questions</li>
+        <li>Rolling 100 tracking & projections</li>
+        <li>Schedule uploads & bucket planning</li>
+        <li>Rotation queries from bid package</li>
+        <li>Pay calculations with current rates</li>
+        <li>Constraint tracking</li>
+        <li>10 AI strategy analyses per month</li>
+        <li>WhatsApp — no app needed</li>
+      </ul>
+      <a href="https://wa.me/18335736743?text=Hi" class="btn-primary" style="width:100%; justify-content:center;">Get Started</a>
+    </div>
+    <p style="text-align:center; margin-top:20px; color:var(--text-tertiary); font-size:0.85rem;">Atlas Unlimited coming soon.</p>
+  </section>
 
-  <!-- Comparison -->
-  <div class="section compare">
-    <h2>How PilotForge Compares</h2>
-    <table class="compare-table">
-      <tr>
-        <th>Feature</th>
-        <th>PilotForge</th>
-        <th>PBS Bidding Tools</th>
-        <th>Spreadsheets</th>
-      </tr>
-      <tr>
-        <td>Natural language questions</td>
-        <td><strong>✅ Via WhatsApp</strong></td>
-        <td>❌</td>
-        <td>❌</td>
-      </tr>
-      <tr>
-        <td>Post-award strategy</td>
-        <td><strong>✅ GS timing, reserve optimization</strong></td>
-        <td>❌ Pre-award only</td>
-        <td>❌</td>
-      </tr>
-      <tr>
-        <td>FAR 117 + contract lookup</td>
-        <td><strong>✅ With section citations</strong></td>
-        <td>❌</td>
-        <td>❌</td>
-      </tr>
-      <tr>
-        <td>Rolling 100 day-by-day</td>
-        <td><strong>✅ Automatic projections</strong></td>
-        <td>❌</td>
-        <td>⚠️ Manual entry</td>
-      </tr>
-      <tr>
-        <td>Pay optimization</td>
-        <td><strong>✅ AI-powered</strong></td>
-        <td>❌</td>
-        <td>⚠️ Basic formulas</td>
-      </tr>
-      <tr>
-        <td>Price</td>
-        <td><strong>$29.99/mo</strong></td>
-        <td>$50-100/yr</td>
-        <td>Free (+ your time)</td>
-      </tr>
-    </table>
-  </div>
+  <!-- Compare -->
+  <section class="section" style="border-top: 1px solid var(--border);">
+    <div class="section-header">
+      <h2>How it compares.</h2>
+    </div>
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <tr>
+          <th>Feature</th>
+          <th>PilotForge</th>
+          <th>PBS Tools</th>
+          <th>Spreadsheets</th>
+        </tr>
+        <tr>
+          <td>Natural language questions</td>
+          <td><strong style="color:var(--accent)">✅ Via WhatsApp</strong></td>
+          <td>❌</td>
+          <td>❌</td>
+        </tr>
+        <tr>
+          <td>Post-award strategy</td>
+          <td><strong style="color:var(--accent)">✅ GS timing, reserve opt.</strong></td>
+          <td>❌ Pre-award only</td>
+          <td>❌</td>
+        </tr>
+        <tr>
+          <td>FAR 117 + contract lookup</td>
+          <td><strong style="color:var(--accent)">✅ With citations</strong></td>
+          <td>❌</td>
+          <td>❌</td>
+        </tr>
+        <tr>
+          <td>Rolling 100 day-by-day</td>
+          <td><strong style="color:var(--accent)">✅ Automatic</strong></td>
+          <td>❌</td>
+          <td>⚠️ Manual</td>
+        </tr>
+        <tr>
+          <td>Pay optimization</td>
+          <td><strong style="color:var(--accent)">✅ AI-powered</strong></td>
+          <td>❌</td>
+          <td>⚠️ Basic</td>
+        </tr>
+        <tr>
+          <td>Price</td>
+          <td><strong style="color:var(--text-primary)">$29.99/mo</strong></td>
+          <td>$50-100/yr</td>
+          <td>Free (+ your time)</td>
+        </tr>
+      </table>
+    </div>
+  </section>
 
   <!-- FAQ -->
-  <div class="section">
-    <h2>FAQ</h2>
-    <div class="faq-item">
-      <h3>Is PilotForge affiliated with any airline or union?</h3>
-      <p>No. PilotForge is an independent tool built by a pilot. We are not affiliated with any airline, any pilot union, the FAA, or any scheduling provider.</p>
+  <section class="section" id="faq" style="border-top: 1px solid var(--border);">
+    <div class="section-header">
+      <h2>Questions.</h2>
     </div>
-    <div class="faq-item">
-      <h3>Is this legal advice?</h3>
-      <p>No. PilotForge is an informational reference tool only. All responses cite specific contract sections and regulations, but the PIC is solely responsible for compliance decisions. Always verify with Crew Scheduling.</p>
+    <div style="max-width:680px; margin:0 auto;">
+      <div class="faq-item">
+        <h3>Is PilotForge affiliated with any airline or union?</h3>
+        <p>No. PilotForge is an independent tool built by a pilot. Not affiliated with any airline, pilot union, the FAA, or any scheduling provider.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is this legal advice?</h3>
+        <p>No. PilotForge is informational only. Responses cite specific contract sections and regulations, but the PIC is solely responsible for compliance. Always verify with Crew Scheduling.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Does PilotForge interface with airline systems?</h3>
+        <p>No. PilotForge doesn't connect to any airline system. BYOD model — you upload documents you already have. No access to any airline crew management or scheduling application.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How does the free trial work?</h3>
+        <p>Text our number and complete a quick profile. First 3 questions are free — no credit card.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I cancel anytime?</h3>
+        <p>Yes. Monthly, no commitment. Cancel anytime.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Does it work for other airlines?</h3>
+        <p>Currently optimized for one major U.S. carrier. Expansion to additional airlines is on the roadmap.</p>
+      </div>
     </div>
-    <div class="faq-item">
-      <h3>What about airline IT policies?</h3>
-      <p>PilotForge does not interface with any airline system. It's a BYOD model — you upload your own documents (schedule PDFs, bid packages) that you already have. We don't access any airline applications or systems.</p>
-    </div>
-    <div class="faq-item">
-      <h3>How does the free trial work?</h3>
-      <p>Text our number and complete a quick profile setup. Your first 3 questions are free — no credit card required. After that, subscribe to keep using Atlas.</p>
-    </div>
-    <div class="faq-item">
-      <h3>Can I cancel anytime?</h3>
-      <p>Yes. Monthly subscription with no commitment. Cancel anytime and you won't be charged again.</p>
-    </div>
-    <div class="faq-item">
-      <h3>Does it work for all airlines?</h3>
-      <p>Currently optimized for airline pilots using FAR 117 + union contract + scheduling handbook. Works with any carrier's documents.</p>
-    </div>
-  </div>
+  </section>
 
-  <!-- Trust & Technology -->
-  <div class="section" style="text-align:center; padding-bottom:0;">
-    <h2>Built on World-Class AI</h2>
-    <p class="subtitle">PilotForge is powered by <strong>Anthropic's Claude</strong> — the most capable AI models available. The same technology used by leading enterprises for complex reasoning and analysis.</p>
-    <div style="display:flex; justify-content:center; gap:40px; flex-wrap:wrap; margin-top:32px;">
-      <div style="text-align:center;">
-        <div style="font-size:2.5rem;">🧠</div>
-        <div style="font-weight:600; color:#003366; margin-top:8px;">Claude Opus</div>
-        <div style="color:#888; font-size:0.9rem;">Deep strategic reasoning</div>
-      </div>
-      <div style="text-align:center;">
-        <div style="font-size:2.5rem;">⚡</div>
-        <div style="font-weight:600; color:#003366; margin-top:8px;">Claude Sonnet</div>
-        <div style="color:#888; font-size:0.9rem;">Fast rules & contract lookup</div>
-      </div>
-      <div style="text-align:center;">
-        <div style="font-size:2.5rem;">🔐</div>
-        <div style="font-weight:600; color:#003366; margin-top:8px;">Enterprise Security</div>
-        <div style="color:#888; font-size:0.9rem;">Your data never trains AI models</div>
-      </div>
-    </div>
-    <p style="color:#888; font-size:0.85rem; margin-top:24px;">Atlas uses different AI models for different tasks — fast models for quick lookups, powerful models for complex strategy. You always get the right tool for the question.</p>
-  </div>
+  <!-- Bottom CTA -->
+  <section class="bottom-cta" style="border-top: 1px solid var(--border);">
+    <h2>Ready to fly smarter?</h2>
+    <p>Three free questions. No credit card. Just text.</p>
+    <a href="https://wa.me/18335736743?text=Hi" class="btn-primary">Start Free Trial</a>
+  </section>
 
-  <!-- Social proof numbers -->
-  <div class="section" style="text-align:center;">
-    <div style="display:flex; justify-content:center; gap:48px; flex-wrap:wrap;">
-      <div>
-        <div style="font-size:2.2rem; font-weight:800; color:#003366;">3</div>
-        <div style="color:#888; font-size:0.9rem;">Knowledge bases indexed</div>
-      </div>
-      <div>
-        <div style="font-size:2.2rem; font-weight:800; color:#003366;">500+</div>
-        <div style="color:#888; font-size:0.9rem;">Pages of rules searchable</div>
-      </div>
-      <div>
-        <div style="font-size:2.2rem; font-weight:800; color:#003366;">24/7</div>
-        <div style="color:#888; font-size:0.9rem;">Available via WhatsApp</div>
-      </div>
-      <div>
-        <div style="font-size:2.2rem; font-weight:800; color:#003366;">&lt;30s</div>
-        <div style="color:#888; font-size:0.9rem;">Average response time</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Testimonial-style callout -->
-  <div class="section">
-    <div style="background:white; border-left:4px solid #C8102E; padding:24px 28px; border-radius:0 12px 12px 0; box-shadow:0 2px 8px rgba(0,0,0,0.06); max-width:700px; margin:0 auto;">
-      <p style="font-size:1.1rem; color:#333; font-style:italic; margin-bottom:12px;">"I asked Atlas if a 6-day trip would fit my bucket. A simple calculation said it would bust at 122 hours. Atlas checked day by day and found it actually fits — peak 98 hours — because old hours were aging off during the trip. That's a $9,400 premium trip I would have skipped."</p>
-      <p style="color:#888; font-size:0.9rem;">— Beta tester, widebody FO</p>
-    </div>
-  </div>
-
+  <!-- Footer -->
   <footer>
-    <div style="margin-bottom:12px;">
-      <span style="opacity:0.7;">Powered by</span> <strong>Anthropic Claude</strong>
-    </div>
     <div class="links">
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Service</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
       <a href="mailto:info@pilotforge.ltd">Contact</a>
     </div>
-    <p>&copy; 2026 PilotForge LLC. All rights reserved.</p>
-    <p class="legal">PilotForge LLC — Sheridan, WY | info@pilotforge.ltd</p>
-    <p class="legal" style="margin-top:8px;">⚠️ Informational reference only — not operational guidance.</p>
+    <p class="copy">&copy; 2026 PilotForge LLC · Sheridan, WY · info@pilotforge.ltd</p>
+    <p class="disclaimer">Informational reference only — not operational guidance. Not affiliated with any airline or labor organization.</p>
   </footer>
+
 </body>
 </html>
