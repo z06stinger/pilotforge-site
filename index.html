@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PilotForge — AI Schedule Strategy for Airline Pilots | FAR 117, PBS Bidding, Green Slip Optimization</title>
+  <meta name="description" content="PilotForge is your AI copilot for schedule strategy. Ask questions about FAR 117, rolling 100, green slip timing, reserve optimization, and PBS bidding — all via WhatsApp. Built by pilots, for pilots.">
+  <meta name="keywords" content="pilot schedule optimization, FAR 117, rolling 100, green slip, PBS bidding, reserve strategy, airline pilot tools, Delta pilot, flight time tracking, duty time calculator, pilot pay optimization">
+  <meta property="og:title" content="PilotForge — AI Schedule Strategy for Airline Pilots">
+  <meta property="og:description" content="Your AI copilot for FAR 117, rolling 100, green slip timing, and reserve strategy. Ask anything via WhatsApp.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pilotforge.ltd">
+  <meta property="og:image" content="https://pilotforge.ltd/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="PilotForge">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PilotForge — AI Schedule Strategy for Airline Pilots">
+  <meta name="twitter:description" content="Your AI copilot for FAR 117, rolling 100, green slip timing, and reserve strategy. Ask anything via WhatsApp.">
+  <meta name="twitter:image" content="https://pilotforge.ltd/og-image.png">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://pilotforge.ltd">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "PilotForge",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "WhatsApp",
+    "description": "AI-powered schedule strategy assistant for airline pilots. FAR 117 compliance, rolling 100 tracking, green slip optimization, and PBS bid strategy.",
+    "offers": {
+      "@type": "Offer",
+      "price": "29.99",
+      "priceCurrency": "USD",
+      "priceValidUntil": "2027-12-31"
+    }
+  }
+  </script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f8f9fa;
+      color: #1a1a2e;
+      line-height: 1.6;
+    }
+    .hero {
+      background: linear-gradient(135deg, #003366 0%, #001a33 100%);
+      color: white;
+      padding: 80px 24px 60px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+    .hero .tagline {
+      font-size: 1.3rem;
+      opacity: 0.9;
+      max-width: 700px;
+      margin: 0 auto 24px;
+    }
+    .hero .sub {
+      font-size: 1.05rem;
+      opacity: 0.7;
+      max-width: 600px;
+      margin: 0 auto 32px;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: #C8102E;
+      color: white;
+      padding: 16px 40px;
+      border-radius: 8px;
+      font-size: 1.15rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s;
+      margin: 8px;
+    }
+    .cta-btn:hover { background: #a00d24; }
+    .cta-btn.secondary {
+      background: transparent;
+      border: 2px solid rgba(255,255,255,0.5);
+    }
+    .cta-btn.secondary:hover { border-color: white; background: rgba(255,255,255,0.1); }
+    .social-proof {
+      background: #002244;
+      color: rgba(255,255,255,0.85);
+      padding: 20px 24px;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+    .social-proof strong { color: white; }
+
+    .section { max-width: 960px; margin: 60px auto; padding: 0 24px; }
+    .section h2 { font-size: 1.8rem; text-align: center; margin-bottom: 16px; color: #003366; }
+    .section .subtitle { text-align: center; color: #666; margin-bottom: 40px; font-size: 1.05rem; }
+
+    /* Examples section */
+    .examples {
+      background: white;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      max-width: 700px;
+      margin: 0 auto 60px;
+    }
+    .example-item {
+      padding: 16px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .example-item:last-child { border-bottom: none; }
+    .example-q {
+      font-weight: 600;
+      color: #003366;
+      margin-bottom: 6px;
+    }
+    .example-a {
+      color: #555;
+      font-size: 0.95rem;
+      padding-left: 16px;
+      border-left: 3px solid #C8102E;
+    }
+
+    /* Features */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .feature-card {
+      background: white;
+      border-radius: 12px;
+      padding: 28px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .feature-card .icon { font-size: 2rem; margin-bottom: 12px; }
+    .feature-card h3 { font-size: 1.1rem; margin-bottom: 8px; color: #003366; }
+    .feature-card p { font-size: 0.95rem; color: #555; }
+
+    /* Pricing */
+    .pricing-container {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+    .price-card {
+      background: white;
+      border-radius: 16px;
+      padding: 40px 32px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      width: 340px;
+      text-align: center;
+      position: relative;
+    }
+    .price-card.featured {
+      border: 3px solid #003366;
+      transform: scale(1.03);
+    }
+    .price-card .plan-name {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #003366;
+      margin-bottom: 8px;
+    }
+    .price-card .price {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: #1a1a2e;
+      margin: 16px 0 4px;
+    }
+    .price-card .price span { font-size: 1rem; font-weight: 400; color: #888; }
+    .price-card .price-note { color: #888; font-size: 0.9rem; margin-bottom: 20px; }
+    .price-card ul {
+      list-style: none;
+      text-align: left;
+      margin: 20px 0;
+    }
+    .price-card ul li {
+      padding: 8px 0;
+      font-size: 0.95rem;
+      color: #444;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .price-card ul li:before {
+      content: "✓ ";
+      color: #003366;
+      font-weight: 700;
+    }
+    .popular-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #C8102E;
+      color: white;
+      padding: 4px 16px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    /* Compare */
+    .compare { margin-top: 60px; }
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .compare-table th {
+      background: #003366;
+      color: white;
+      padding: 14px 16px;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+    .compare-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 0.9rem;
+    }
+    .compare-table tr:last-child td { border-bottom: none; }
+
+    /* FAQ */
+    .faq-item {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .faq-item h3 {
+      color: #003366;
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+    }
+    .faq-item p { color: #555; font-size: 0.95rem; }
+
+    footer {
+      background: #003366;
+      color: rgba(255,255,255,0.8);
+      text-align: center;
+      padding: 40px 24px;
+      margin-top: 60px;
+    }
+    footer a { color: white; text-decoration: underline; }
+    footer .legal { margin-top: 16px; font-size: 0.85rem; opacity: 0.7; }
+    footer .links { margin-bottom: 12px; }
+    footer .links a { margin: 0 12px; }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 2rem; }
+      .hero .tagline { font-size: 1.1rem; }
+      .price-card { width: 100%; }
+      .price-card.featured { transform: none; }
+      .examples { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <h1>✈️ PilotForge</h1>
+    <p class="tagline">Your AI copilot for schedule strategy, FAR 117 compliance, and pay optimization.</p>
+    <p class="sub">Ask Atlas anything via WhatsApp — rules, strategy, bucket status, green slip timing. No app to download.</p>
+    <a href="https://wa.me/18335736743?text=Hi" class="cta-btn">Start Free Trial →</a>
+    <a href="#pricing" class="cta-btn secondary">See Pricing</a>
+  </div>
+
+  <div class="social-proof">
+    Built by a <strong>Delta pilot</strong> for pilots. <strong>FAR 117</strong> + <strong>PWA</strong> + <strong>Scheduling Handbook</strong> — all searchable via text message.
+  </div>
+
+  <!-- Examples -->
+  <div class="section">
+    <h2>Ask Atlas Anything</h2>
+    <p class="subtitle">Real questions from real pilots — answered in seconds via WhatsApp.</p>
+    <div class="examples">
+      <div class="example-item">
+        <div class="example-q">"What's my FDP limit for a 3-leg day reporting at 0600?"</div>
+        <div class="example-a">Per FAR §117.13 Table B, acclimated, 0500-0559 report: 3 segments = 12.0h FDP limit. Extension available per §117.19 up to 2 additional hours with PIC/SIC agreement.</div>
+      </div>
+      <div class="example-item">
+        <div class="example-q">"Can I fit a 6-day trip starting May 20 into my bucket?"</div>
+        <div class="example-a">Day-by-day analysis: your bucket peaks at 98.0h on May 22. The trip fits — 2h margin. Old A157 hours drop off May 2-7, creating room as the new trip's block accumulates.</div>
+      </div>
+      <div class="example-item">
+        <div class="example-q">"What are my GS options on X-days May 20-27?"</div>
+        <div class="example-a">75.3h bucket room on May 20 → fits any trip. Best play: 6-day reporting May 20 at ~$9,400 GS pay on top of guarantee. Or stack two 3-days for flexibility.</div>
+      </div>
+      <div class="example-item">
+        <div class="example-q">"I was rerouted yesterday. Today they're trying to reroute me again instead of returning me. Legal?"</div>
+        <div class="example-a">Per PWA Section 23 L., after a reroute the Company must return you to your original rotation or release you. A second reroute is not how Section 23 L. works. Don't acknowledge the CNO — call scheduling and assert your rights.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Features -->
+  <div class="section">
+    <h2>What You Get</h2>
+    <p class="subtitle">Everything a pilot needs to manage their schedule, in one WhatsApp conversation.</p>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="icon">🧠</div>
+        <h3>AI Strategy Analysis</h3>
+        <p>Reserve optimization, green slip timing, bucket management, bid strategy — powered by AI that thinks like an experienced line pilot.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">📋</div>
+        <h3>FAR 117 & Contract Lookup</h3>
+        <p>Instant answers with specific section citations. FAR 117, PWA, Scheduling Handbook — searchable by natural language.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">📊</div>
+        <h3>Rolling 100 Tracker</h3>
+        <p>Upload your schedule, get day-by-day bucket projections with drop-off dates and green slip pickup windows.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">💰</div>
+        <h3>Pay Optimization</h3>
+        <p>Green slip math, premium pay calculations, reserve guarantee analysis — with actual 2026 pay rates.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">📱</div>
+        <h3>WhatsApp Native</h3>
+        <p>No app to download, no login to remember. Text a number, upload PDFs, get answers. Works from your phone, iPad, or layover hotel WiFi.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🔒</div>
+        <h3>Your Data, Your Control</h3>
+        <p>Per-pilot data isolation. Your schedule, constraints, and strategy are private. BYOD model — you upload your own documents.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pricing -->
+  <div class="section" id="pricing">
+    <h2>Pricing</h2>
+    <p class="subtitle">One good green slip recommendation pays for a year of PilotForge.</p>
+    <div class="pricing-container">
+      <div class="price-card featured">
+        <div class="popular-badge">Most Popular</div>
+        <div class="plan-name">Atlas Standard</div>
+        <div class="price">$29.99<span>/mo</span></div>
+        <div class="price-note">Cancel anytime. 3 free queries to try.</div>
+        <ul>
+          <li>Unlimited rules & contract questions</li>
+          <li>Rolling 100 tracking & projections</li>
+          <li>Schedule uploads & bucket planning</li>
+          <li>Rotation queries from bid package</li>
+          <li>Pay calculations with 2026 rates</li>
+          <li>Constraint tracking (training, X-days, blackouts)</li>
+          <li>10 AI strategy analyses per month</li>
+          <li>WhatsApp — no app needed</li>
+        </ul>
+        <a href="https://wa.me/18335736743?text=Hi" class="cta-btn" style="display:block;">Get Started →</a>
+      </div>
+    </div>
+    <p style="text-align:center; margin-top:24px; color:#888; font-size:0.9rem;">Need unlimited strategy queries? Ask us about Atlas Unlimited — coming soon.</p>
+  </div>
+
+  <!-- Comparison -->
+  <div class="section compare">
+    <h2>How PilotForge Compares</h2>
+    <table class="compare-table">
+      <tr>
+        <th>Feature</th>
+        <th>PilotForge</th>
+        <th>PBS Bidding Tools</th>
+        <th>Spreadsheets</th>
+      </tr>
+      <tr>
+        <td>Natural language questions</td>
+        <td><strong>✅ Via WhatsApp</strong></td>
+        <td>❌</td>
+        <td>❌</td>
+      </tr>
+      <tr>
+        <td>Post-award strategy</td>
+        <td><strong>✅ GS timing, reserve optimization</strong></td>
+        <td>❌ Pre-award only</td>
+        <td>❌</td>
+      </tr>
+      <tr>
+        <td>FAR 117 + contract lookup</td>
+        <td><strong>✅ With section citations</strong></td>
+        <td>❌</td>
+        <td>❌</td>
+      </tr>
+      <tr>
+        <td>Rolling 100 day-by-day</td>
+        <td><strong>✅ Automatic projections</strong></td>
+        <td>❌</td>
+        <td>⚠️ Manual entry</td>
+      </tr>
+      <tr>
+        <td>Pay optimization</td>
+        <td><strong>✅ AI-powered</strong></td>
+        <td>❌</td>
+        <td>⚠️ Basic formulas</td>
+      </tr>
+      <tr>
+        <td>Price</td>
+        <td><strong>$29.99/mo</strong></td>
+        <td>$50-100/yr</td>
+        <td>Free (+ your time)</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section">
+    <h2>FAQ</h2>
+    <div class="faq-item">
+      <h3>Is PilotForge affiliated with any airline or union?</h3>
+      <p>No. PilotForge is an independent tool built by a pilot. We are not affiliated with Delta, ALPA, the FAA, or any scheduling provider.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is this legal advice?</h3>
+      <p>No. PilotForge is an informational reference tool only. All responses cite specific contract sections and regulations, but the PIC is solely responsible for compliance decisions. Always verify with Crew Scheduling.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What about Delta IT Policy 10.5?</h3>
+      <p>PilotForge does not interface with any Delta system. It's a BYOD model — you upload your own documents (schedule PDFs, bid packages) that you already have. We don't access Mission+, CrewTrac, or any airline application.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How does the free trial work?</h3>
+      <p>Text our number and complete a quick profile setup. Your first 3 questions are free — no credit card required. After that, subscribe to keep using Atlas.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I cancel anytime?</h3>
+      <p>Yes. Monthly subscription with no commitment. Cancel anytime and you won't be charged again.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does it work for airlines other than Delta?</h3>
+      <p>Currently optimized for Delta Air Lines pilots (FAR 117 + Delta PWA + Scheduling Handbook). We're exploring expansion to other carriers.</p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="mailto:info@pilotforge.ltd">Contact</a>
+    </div>
+    <p>&copy; 2026 PilotForge LLC. All rights reserved.</p>
+    <p class="legal">PilotForge LLC — Sheridan, WY | info@pilotforge.ltd</p>
+    <p class="legal" style="margin-top:8px;">⚠️ Informational reference only — not operational guidance.</p>
+  </footer>
+</body>
+</html>
