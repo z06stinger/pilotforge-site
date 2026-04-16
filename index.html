@@ -31,12 +31,29 @@
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "WhatsApp",
     "description": "AI-powered schedule strategy assistant for airline pilots.",
-    "offers": {
-      "@type": "Offer",
-      "price": "29.99",
-      "priceCurrency": "USD",
-      "priceValidUntil": "2027-12-31"
-    }
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Jumpseat",
+        "price": "9.99",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2027-12-31"
+      },
+      {
+        "@type": "Offer",
+        "name": "Copilot",
+        "price": "20.00",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2027-12-31"
+      },
+      {
+        "@type": "Offer",
+        "name": "Captain",
+        "price": "30.00",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2027-12-31"
+      }
+    ]
   }
   </script>
   <style>
@@ -314,64 +331,99 @@
     }
 
     /* ─── PRICING ─── */
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    @media (max-width: 900px) {
+      .price-grid { grid-template-columns: 1fr; max-width: 440px; }
+    }
     .price-card {
       background: var(--bg-card);
-      border: 1px solid var(--border-hover);
+      border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 48px 40px;
-      max-width: 420px;
-      margin: 0 auto;
+      padding: 40px 28px;
       text-align: center;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      transition: border 200ms ease, transform 200ms ease;
+    }
+    .price-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+    }
+    .price-card.featured {
+      border-color: var(--accent);
+      background: linear-gradient(180deg, rgba(74,158,218,0.06) 0%, var(--bg-card) 60%);
     }
     .price-badge {
-      display: inline-block;
-      background: var(--accent-glow);
-      color: var(--accent);
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: #000;
       padding: 4px 14px;
       border-radius: 980px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      margin-bottom: 20px;
-      border: 1px solid rgba(74, 158, 218, 0.2);
     }
     .price-name {
-      font-size: 1.6rem;
+      font-size: 1.35rem;
       font-weight: 700;
       margin-bottom: 4px;
       letter-spacing: -0.02em;
     }
+    .price-tagline {
+      color: var(--text-tertiary);
+      font-size: 0.82rem;
+      margin-bottom: 20px;
+      min-height: 1.2em;
+    }
     .price-amount {
-      font-size: 3.5rem;
+      font-size: 2.8rem;
       font-weight: 700;
       letter-spacing: -0.03em;
-      margin: 16px 0 4px;
+      margin: 8px 0 2px;
     }
     .price-amount span {
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 400;
       color: var(--text-tertiary);
     }
+    .price-annual {
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+      min-height: 1.2em;
+    }
     .price-note {
       color: var(--text-tertiary);
-      font-size: 0.88rem;
-      margin-bottom: 32px;
+      font-size: 0.8rem;
+      margin-bottom: 20px;
+      min-height: 1.2em;
     }
     .price-features {
       list-style: none;
       text-align: left;
-      margin: 0 0 36px;
+      margin: 0 0 28px;
+      flex: 1;
     }
     .price-features li {
-      padding: 12px 0;
-      font-size: 0.9rem;
+      padding: 10px 0;
+      font-size: 0.86rem;
       color: var(--text-secondary);
       border-bottom: 1px solid var(--border);
       display: flex;
-      align-items: center;
-      gap: 12px;
+      align-items: flex-start;
+      gap: 10px;
     }
     .price-features li:last-child { border-bottom: none; }
     .price-features li::before {
@@ -380,6 +432,12 @@
       font-weight: 700;
       font-size: 0.85rem;
       flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .price-features li.muted { color: var(--text-tertiary); }
+    .price-features li.muted::before {
+      content: "—";
+      color: var(--text-tertiary);
     }
 
     /* ─── COMPARE ─── */
@@ -605,26 +663,76 @@
   <section class="section" id="pricing" style="border-top: 1px solid var(--border);">
     <div class="section-header">
       <p class="eyebrow">Pricing</p>
-      <h2>One green slip pays for a year.</h2>
+      <h2>Pick your seat.</h2>
+      <p class="section-sub" style="color:var(--text-secondary); max-width:600px; margin:12px auto 0; font-size:0.95rem;">Start free. Upgrade when you're ready. One green slip pays for the whole year.</p>
     </div>
-    <div class="price-card">
-      <div class="price-badge">Most Popular</div>
-      <div class="price-name">Atlas Standard</div>
-      <div class="price-amount">$29.99<span> /mo</span></div>
-      <div class="price-note">Cancel anytime · 3 free queries to start</div>
-      <ul class="price-features">
-        <li>Unlimited rules & contract questions</li>
-        <li>Rolling 100 tracking & projections</li>
-        <li>Schedule uploads & bucket planning</li>
-        <li>Rotation queries from bid package</li>
-        <li>Pay calculations with current rates</li>
-        <li>Constraint tracking</li>
-        <li>10 AI strategy analyses per month</li>
-        <li>WhatsApp — no app needed</li>
-      </ul>
-      <a href="https://wa.me/18335736743?text=Hi" class="btn-primary" style="width:100%; justify-content:center;">Get Started</a>
+    <div class="price-grid">
+
+      <!-- Jumpseat -->
+      <div class="price-card">
+        <div class="price-name">Jumpseat</div>
+        <div class="price-tagline">Rides along. Answers the basics.</div>
+        <div class="price-amount">$9.99<span> /mo</span></div>
+        <div class="price-annual">&nbsp;</div>
+        <div class="price-note">3 free queries · No card to start</div>
+        <ul class="price-features">
+          <li>20 queries per month</li>
+          <li>FAR 117 + contract rule lookups</li>
+          <li>Rolling 100 & bucket tracking</li>
+          <li>Pay calculations</li>
+          <li>Constraint tracking</li>
+          <li>3 courtesy strategy questions/mo</li>
+          <li class="muted">Bid package analysis</li>
+          <li class="muted">Unlimited strategy</li>
+        </ul>
+        <a href="https://wa.me/18335736743?text=Start%20Jumpseat" class="btn-ghost" style="width:100%; justify-content:center;">Start Free</a>
+      </div>
+
+      <!-- Copilot (featured) -->
+      <div class="price-card featured">
+        <div class="price-badge">Most Popular</div>
+        <div class="price-name">Copilot</div>
+        <div class="price-tagline">Your active decision partner.</div>
+        <div class="price-amount">$20<span> /mo</span></div>
+        <div class="price-annual">&nbsp;</div>
+        <div class="price-note">Cancel anytime · No query cap</div>
+        <ul class="price-features">
+          <li><strong>Unlimited</strong> rule queries</li>
+          <li><strong>Unlimited</strong> strategy analysis</li>
+          <li>Bid package parsing & rotation search</li>
+          <li>Green slip timing & bucket arbitrage</li>
+          <li>Reserve optimization & trip drops</li>
+          <li>If/then scenario modeling</li>
+          <li>All pay calculations</li>
+          <li>50 deep Opus analyses/mo</li>
+        </ul>
+        <a href="https://wa.me/18335736743?text=Upgrade%20Copilot" class="btn-primary" style="width:100%; justify-content:center;">Go Copilot</a>
+      </div>
+
+      <!-- Captain -->
+      <div class="price-card">
+        <div class="price-name">Captain</div>
+        <div class="price-tagline">Full command. No limits.</div>
+        <div class="price-amount">$30<span> /mo</span></div>
+        <div class="price-annual">or $240/yr — save 33%</div>
+        <div class="price-note">Captain for the price of Copilot</div>
+        <ul class="price-features">
+          <li>Everything in Copilot</li>
+          <li><strong>Unlimited</strong> deep strategy (no Opus cap)</li>
+          <li><strong>Unlimited</strong> bid package parsing</li>
+          <li>Priority response queue</li>
+          <li>Multi-month projection analysis</li>
+          <li>Upgrade/downgrade pay arbitrage</li>
+          <li>Green slip + displacement modeling</li>
+          <li>Annual option: lock in 33% savings</li>
+        </ul>
+        <a href="https://wa.me/18335736743?text=Upgrade%20Captain" class="btn-ghost" style="width:100%; justify-content:center;">Take Command</a>
+      </div>
+
     </div>
-    <p style="text-align:center; margin-top:20px; color:var(--text-tertiary); font-size:0.85rem;">Atlas Unlimited coming soon.</p>
+    <p style="text-align:center; margin-top:32px; color:var(--text-tertiary); font-size:0.82rem; max-width:640px; margin-left:auto; margin-right:auto;">
+      Every plan starts with 3 free queries. No credit card. Upgrade, downgrade, or cancel any time via WhatsApp — just text <strong style="color:var(--text-secondary)">UPGRADE</strong> or <strong style="color:var(--text-secondary)">CANCEL</strong>.
+    </p>
   </section>
 
   <!-- Compare -->
@@ -672,7 +780,7 @@
         </tr>
         <tr>
           <td>Price</td>
-          <td><strong style="color:var(--text-primary)">$29.99/mo</strong></td>
+          <td><strong style="color:var(--text-primary)">From $9.99/mo</strong></td>
           <td>$50-100/yr</td>
           <td>Free (+ your time)</td>
         </tr>
@@ -703,8 +811,18 @@
         <p>Text our number and complete a quick profile. First 3 questions are free — no credit card.</p>
       </div>
       <div class="faq-item">
-        <h3>Can I cancel anytime?</h3>
-        <p>Yes. Monthly, no commitment. Cancel anytime.</p>
+        <h3>What's the difference between Jumpseat, Copilot, and Captain?</h3>
+        <p><strong>Jumpseat ($9.99/mo):</strong> Rule lookups, FAR 117, contract sections, pay rates. 20 queries/mo plus 3 courtesy strategy questions. Good for checking facts.</p>
+        <p><strong>Copilot ($20/mo):</strong> Unlimited queries. Full strategy analysis — bucket planning, trip selection, green slip timing, bid package parsing. Good for active decision-making.</p>
+        <p><strong>Captain ($30/mo or $240/yr):</strong> Everything Copilot plus unlimited deep strategy (no Opus caps), multi-month projections, and priority. Best for power users and annual commits.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I change tiers or cancel?</h3>
+        <p>Yes. Text <strong>UPGRADE</strong>, <strong>DOWNGRADE</strong>, or <strong>CANCEL</strong> any time. Monthly plans have no commitment. Annual Captain is billed yearly at $240 — prorated refund if you cancel early.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How do I check my usage?</h3>
+        <p>Text <strong>MYTIER</strong> to see your current plan and this month's query count.</p>
       </div>
       <div class="faq-item">
         <h3>Does it work for other airlines?</h3>
