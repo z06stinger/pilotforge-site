@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZuluRoam by PilotForge — Own Every Time Zone</title>
+  <meta name="description" content="ZuluRoam is the circadian coach built for crew. Science-backed layover planning, Apple Watch integration, and adaptive recovery tracking for international pilots.">
+  <meta property="og:title" content="ZuluRoam — Own Every Time Zone">
+  <meta property="og:description" content="Science-backed circadian optimization for airline pilots. Adaptive layover plans, wearable integration, real-time recovery tracking.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pilotforge.ltd/zuluRoam.html">
+  <meta property="og:site_name" content="PilotForge">
+  <link rel="canonical" href="https://pilotforge.ltd/zuluRoam.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000000;
+      --bg-card: #111111;
+      --bg-card-hover: #1a1a1a;
+      --surface: #1d1d1f;
+      --text-primary: #f5f5f7;
+      --text-secondary: #86868b;
+      --text-tertiary: #6e6e73;
+      --accent: #4a9eda;
+      --accent-hover: #5ab0f0;
+      --accent-glow: rgba(74, 158, 218, 0.12);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(255, 255, 255, 0.15);
+      --radius: 20px;
+      --radius-sm: 12px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Helvetica Neue', sans-serif;
+      background: var(--bg); color: var(--text-primary);
+      line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(0,0,0,0.72);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px; height: 48px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-brand img { height: 28px; border-radius: 6px; }
+    .nav-brand span { font-size: 1.05rem; font-weight: 600; color: var(--text-primary); }
+    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text-primary); }
+    .nav-cta {
+      background: var(--accent) !important; color: white !important;
+      padding: 6px 16px; border-radius: 980px;
+      font-size: 0.82rem !important; font-weight: 500 !important;
+    }
+
+    .section { max-width: 1024px; margin: 0 auto; padding: 100px 24px; }
+    .section-header { text-align: center; margin-bottom: 60px; }
+    .section-header .eyebrow { font-size: 0.85rem; font-weight: 500; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+    .section-header h2 { font-size: 2.8rem; font-weight: 700; letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 16px; }
+    .section-header p { color: var(--text-secondary); font-size: 1.15rem; max-width: 560px; margin: 0 auto; line-height: 1.6; }
+
+    .hero {
+      padding: 140px 24px 100px; text-align: center;
+      min-height: 80vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+    .hero-eyebrow { font-size: 0.95rem; font-weight: 500; color: var(--accent); margin-bottom: 16px; }
+    .hero h1 { font-size: 3.5rem; font-weight: 700; letter-spacing: -0.03em; line-height: 1.08; margin-bottom: 20px; max-width: 800px; }
+    .hero .tagline { font-size: 1.25rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 40px; line-height: 1.6; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--accent); color: white; padding: 14px 32px;
+      border-radius: 980px; font-size: 1rem; font-weight: 500;
+      text-decoration: none; transition: all 0.3s;
+    }
+    .btn-primary:hover { background: var(--accent-hover); transform: scale(1.02); }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--accent); padding: 14px 32px; border-radius: 980px;
+      font-size: 1rem; font-weight: 500; text-decoration: none;
+    }
+
+    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .feature-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 32px 28px; transition: all 0.3s;
+    }
+    .feature-card:hover { background: var(--bg-card-hover); border-color: var(--border-hover); transform: translateY(-2px); }
+    .feature-icon { font-size: 2rem; margin-bottom: 16px; }
+    .feature-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 8px; }
+    .feature-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; }
+
+    .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1000px; margin: 0 auto; }
+    .price-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 40px 28px; text-align: center;
+      position: relative; display: flex; flex-direction: column; transition: all 0.2s;
+    }
+    .price-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
+    .price-card.featured { border-color: var(--accent); background: linear-gradient(180deg, rgba(74,158,218,0.06) 0%, var(--bg-card) 60%); }
+    .price-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #000; padding: 4px 14px; border-radius: 980px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+    .price-name { font-size: 1.35rem; font-weight: 700; margin-bottom: 4px; }
+    .price-tagline { color: var(--text-tertiary); font-size: 0.82rem; margin-bottom: 20px; }
+    .price-amount { font-size: 2.8rem; font-weight: 700; letter-spacing: -0.03em; margin: 8px 0 2px; }
+    .price-amount span { font-size: 1rem; font-weight: 400; color: var(--text-tertiary); }
+    .price-annual { color: var(--accent); font-size: 0.82rem; font-weight: 600; margin-bottom: 24px; min-height: 1.2em; }
+    .price-features { list-style: none; text-align: left; margin: 0 0 28px; flex: 1; }
+    .price-features li { padding: 10px 0; font-size: 0.86rem; color: var(--text-secondary); border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 10px; }
+    .price-features li:last-child { border-bottom: none; }
+    .price-features li::before { content: "✓"; color: var(--accent); font-weight: 700; font-size: 0.85rem; flex-shrink: 0; margin-top: 1px; }
+    .price-features li.muted { color: var(--text-tertiary); }
+    .price-features li.muted::before { content: "—"; color: var(--text-tertiary); }
+
+    .compare-wrap { overflow-x: auto; }
+    .compare-table { width: 100%; border-collapse: collapse; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; min-width: 500px; }
+    .compare-table th { background: var(--surface); color: var(--text-secondary); padding: 14px 20px; text-align: left; font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+    .compare-table td { padding: 16px 20px; border-bottom: 1px solid var(--border); font-size: 0.88rem; color: var(--text-secondary); }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table td:first-child { color: var(--text-primary); font-weight: 500; }
+
+    .faq-item { border-bottom: 1px solid var(--border); padding: 24px 0; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-item h3 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
+    .faq-item p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7; }
+
+    footer {
+      border-top: 1px solid var(--border); padding: 32px 24px; text-align: center;
+    }
+    footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; }
+    footer a { color: var(--text-tertiary); text-decoration: none; font-size: 0.82rem; }
+    footer a:hover { color: var(--text-secondary); }
+    footer .copy { color: var(--text-tertiary); font-size: 0.78rem; }
+    footer .disclaimer { color: var(--text-tertiary); font-size: 0.75rem; margin-top: 12px; opacity: 0.7; }
+
+    @media (max-width: 768px) {
+      .hero { padding: 100px 20px 60px; min-height: auto; }
+      .hero h1 { font-size: 2.2rem; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .price-grid { grid-template-columns: 1fr; max-width: 440px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-brand">
+      <img src="logo.jpg" alt="PilotForge">
+      <span>PilotForge</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="atlas.html">Atlas</a>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="mailto:info@pilotforge.ltd?subject=ZuluRoam%20Beta" class="nav-cta">Request Beta</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <p class="hero-eyebrow">ZuluRoam by PilotForge</p>
+    <h1>Own every time zone.</h1>
+    <p class="tagline">The circadian coach built for the people who actually live in time zones. Science-backed layover plans, Apple Watch recovery tracking, and adaptive coaching — all on your iPhone.</p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+      <a href="mailto:info@pilotforge.ltd?subject=ZuluRoam%20Beta%20Interest" class="btn-primary">Request Beta Access</a>
+      <a href="atlas.html" class="btn-ghost">See Atlas (Schedule AI) ›</a>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="section" id="features" style="border-top: 1px solid var(--border);">
+    <div class="section-header">
+      <p class="eyebrow">Features</p>
+      <h2>Your body. Your data. Your plan.</h2>
+      <p>Every recommendation backed by peer-reviewed circadian science. Every choice shows its impact in real time.</p>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🌍</div>
+        <h3>Adaptive Layover Plans</h3>
+        <p>Science-optimal sleep, nap, exercise, light exposure, and meal timing — generated instantly from your trip. Customize any block with a tap.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⌚</div>
+        <h3>Apple Watch Integration</h3>
+        <p>Real-time recovery tracking via HealthKit. Sleep stages, HRV trends, resting heart rate, and sleep debt — your body's data driving your plan.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <h3>Cockpit Gauges Dashboard</h3>
+        <p>Composite recovery score, individual biomarker gauges, and adaptive feedback. Adjust your plan and see the impact on projected recovery in real time.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📸</div>
+        <h3>Schedule Photo Import</h3>
+        <p>Snap a photo of your iCrew rotation. ZuluRoam reads it, builds all legs and layovers automatically. No manual data entry.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🧬</div>
+        <h3>Circadian Science Engine</h3>
+        <p>Chronotype-adjusted sleep targets, directional light exposure, caffeine half-life cutoffs, and alcohol impact modeling — all cited to peer-reviewed research.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔄</div>
+        <h3>Adaptive Feedback Loop</h3>
+        <p>Skip a nap? Add a drink? ZuluRoam shows exactly how each choice impacts your projected sleep quality and next-day readiness.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section" style="border-top: 1px solid var(--border);">
+    <div class="section-header">
+      <p class="eyebrow">How It Works</p>
+      <h2>Three steps to better rest.</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+      <div class="feature-card" style="text-align: center;">
+        <div style="display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; background:var(--accent-glow); color:var(--accent); font-weight:700; margin-bottom:16px;">1</div>
+        <h3>Import Your Trip</h3>
+        <p>Photo your iCrew rotation or enter legs manually. ZuluRoam parses airports, times, and layover durations automatically.</p>
+      </div>
+      <div class="feature-card" style="text-align: center;">
+        <div style="display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; background:var(--accent-glow); color:var(--accent); font-weight:700; margin-bottom:16px;">2</div>
+        <h3>Get Your Plan</h3>
+        <p>Science-optimal defaults load instantly. Naps, sleep, light, meals, exercise — all timed to your circadian state and direction of travel.</p>
+      </div>
+      <div class="feature-card" style="text-align: center;">
+        <div style="display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; background:var(--accent-glow); color:var(--accent); font-weight:700; margin-bottom:16px;">3</div>
+        <h3>Make It Yours</h3>
+        <p>Tap any block to customize. Your sleep quality score updates live as you adjust. Apple Watch data refines recommendations between layovers.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Compare -->
+  <section class="section" style="border-top: 1px solid var(--border);">
+    <div class="section-header">
+      <h2>How it compares.</h2>
+    </div>
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <tr>
+          <th>Feature</th>
+          <th>ZuluRoam</th>
+          <th>Generic Jet Lag Apps</th>
+        </tr>
+        <tr>
+          <td>Crew-specific (breaks, report times)</td>
+          <td><strong style="color:var(--accent)">✅</strong></td>
+          <td>❌</td>
+        </tr>
+        <tr>
+          <td>Interactive plan (your choices)</td>
+          <td><strong style="color:var(--accent)">✅ Tap to customize</strong></td>
+          <td>❌ Static plan</td>
+        </tr>
+        <tr>
+          <td>Wearable integration</td>
+          <td><strong style="color:var(--accent)">✅ Apple Watch</strong></td>
+          <td>❌</td>
+        </tr>
+        <tr>
+          <td>Adaptive feedback</td>
+          <td><strong style="color:var(--accent)">✅ Real-time</strong></td>
+          <td>❌</td>
+        </tr>
+        <tr>
+          <td>Offline planning</td>
+          <td><strong style="color:var(--accent)">✅ Full app offline</strong></td>
+          <td>⚠️ Partial</td>
+        </tr>
+        <tr>
+          <td>Multi-trip fatigue context</td>
+          <td><strong style="color:var(--accent)">✅</strong></td>
+          <td>❌ Single trip only</td>
+        </tr>
+        <tr>
+          <td>Regulatory frameworks</td>
+          <td><strong style="color:var(--accent)">✅ FAA, EASA, JCAB, CAAC, ICAO</strong></td>
+          <td>❌ Generic</td>
+        </tr>
+        <tr>
+          <td>Price</td>
+          <td><strong style="color:var(--text-primary)">From $4.99/mo</strong></td>
+          <td>$9.99/mo</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section" id="pricing" style="border-top: 1px solid var(--border);">
+    <div class="section-header">
+      <p class="eyebrow">Pricing</p>
+      <h2>Pick your pace.</h2>
+      <p style="color:var(--text-secondary); max-width:600px; margin:12px auto 0; font-size:0.95rem;">Start exploring. Upgrade when you're ready.</p>
+    </div>
+    <div class="price-grid">
+
+      <div class="price-card">
+        <div class="price-name">Tourist</div>
+        <div class="price-tagline">Just getting by.</div>
+        <div class="price-amount">$4.99<span> /mo</span></div>
+        <div class="price-annual">&nbsp;</div>
+        <ul class="price-features">
+          <li>Basic layover plans</li>
+          <li>Science-backed sleep timing</li>
+          <li>Manual trip entry</li>
+          <li>Light exposure guidance</li>
+          <li>Caffeine cutoff timing</li>
+          <li class="muted">Schedule photo import</li>
+          <li class="muted">Apple Watch integration</li>
+          <li class="muted">Adaptive feedback</li>
+        </ul>
+        <a href="https://buy.stripe.com/14A8wO6l44Gg3g28Om8Ra04" class="btn-ghost" style="width:100%; justify-content:center;">Get Started Free</a>
+      </div>
+
+      <div class="price-card featured">
+        <div class="price-badge">Most Popular</div>
+        <div class="price-name">Traveler</div>
+        <div class="price-tagline">Moving with purpose.</div>
+        <div class="price-amount">$7.99<span> /mo</span></div>
+        <div class="price-annual">or $59.99/yr — save 37%</div>
+        <ul class="price-features">
+          <li>Adaptive layover plans</li>
+          <li>Schedule photo import</li>
+          <li>Exercise &amp; meal coaching</li>
+          <li>Caffeine &amp; alcohol modeling</li>
+          <li>Multi-day layover support</li>
+          <li>In-flight break planning</li>
+          <li class="muted">Apple Watch integration</li>
+          <li class="muted">Cockpit gauges dashboard</li>
+        </ul>
+        <a href="https://buy.stripe.com/cNidR84cWegQaIu1lU8Ra00" class="btn-primary" style="width:100%; justify-content:center;">Go Traveler</a>
+      </div>
+
+      <div class="price-card">
+        <div class="price-name">Explorer</div>
+        <div class="price-tagline">Mastering every destination.</div>
+        <div class="price-amount">$12.99<span> /mo</span></div>
+        <div class="price-annual">or $99.99/yr — save 36%</div>
+        <ul class="price-features">
+          <li>Everything in Traveler</li>
+          <li><strong>Apple Watch</strong> integration</li>
+          <li><strong>Cockpit gauges</strong> dashboard</li>
+          <li>Real-time adaptive feedback</li>
+          <li>Multi-trip fatigue tracking</li>
+          <li>Recovery score &amp; HRV trends</li>
+          <li>Sleep debt monitoring</li>
+          <li>Priority support</li>
+        </ul>
+        <a href="https://buy.stripe.com/eVq9ASgZIb4E2bY7Ki8Ra05" class="btn-ghost" style="width:100%; justify-content:center;">Explore</a>
+      </div>
+
+    </div>
+    <p style="text-align:center; margin-top:32px; color:var(--text-tertiary); font-size:0.82rem; max-width:640px; margin-left:auto; margin-right:auto;">
+      iOS app currently in TestFlight beta. Coming to the App Store.
+    </p>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq" style="border-top: 1px solid var(--border);">
+    <div class="section-header">
+      <h2>Questions.</h2>
+    </div>
+    <div style="max-width:680px; margin:0 auto;">
+      <div class="faq-item">
+        <h3>How is ZuluRoam different from generic jet lag apps?</h3>
+        <p>Generic jet lag apps generate static plans for tourists. ZuluRoam is built for crew — it factors in report times, in-flight breaks, augmented rest, and multi-leg rotations. You customize your plan with real choices (nap, workout, dinner, drinks) and get adaptive feedback powered by your Apple Watch data.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Do I need an Apple Watch?</h3>
+        <p>No. ZuluRoam works great without one. The Watch adds real-time recovery data (sleep stages, HRV, resting HR) that makes recommendations more personalized, but the core science engine works for everyone.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What airlines does ZuluRoam support?</h3>
+        <p>All of them. The circadian science is universal. ZuluRoam supports FAA, EASA, JCAB, CAAC, and ICAO regulatory frameworks. Schedule photo import currently reads iCrew format, with more formats coming.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is this medical advice?</h3>
+        <p>No. ZuluRoam provides science-backed recommendations for sleep timing, light exposure, and activity scheduling. It is not a medical device and does not provide medical advice. Always consult your AME for health concerns.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What's the relationship between Atlas and ZuluRoam?</h3>
+        <p>Both are built by PilotForge. <a href="atlas.html" style="color:var(--accent)">Atlas</a> is a WhatsApp-based schedule strategy AI — FAR 117, pay, bidding, bucket tracking. ZuluRoam is an iOS app for circadian optimization on layovers. Different tools, same mission: help pilots fly smarter.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section style="text-align:center; padding:100px 24px 120px; border-top:1px solid var(--border);">
+    <h2 style="font-size:2.5rem; font-weight:700; margin-bottom:16px;">Rest better. Fly sharper.</h2>
+    <p style="color:var(--text-secondary); font-size:1.1rem; margin-bottom:32px; max-width:480px; margin-left:auto; margin-right:auto;">Currently in TestFlight beta. Request access and start optimizing your next layover.</p>
+    <a href="mailto:info@pilotforge.ltd?subject=ZuluRoam%20Beta%20Interest" class="btn-primary">Request Beta Access</a>
+  </section>
+
+  <footer>
+    <div class="links">
+      <a href="index.html">PilotForge</a>
+      <a href="atlas.html">Atlas</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="mailto:info@pilotforge.ltd">Contact</a>
+    </div>
+    <p class="copy">&copy; 2026 PilotForge LLC &middot; Sheridan, WY &middot; info@pilotforge.ltd</p>
+    <p class="disclaimer">Informational reference only — not medical or operational guidance. Not affiliated with any airline or labor organization.</p>
+  </footer>
+
+</body>
+</html>

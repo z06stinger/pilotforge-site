@@ -3,582 +3,189 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PilotForge — AI Schedule Strategy for Airline Pilots</title>
-  <meta name="description" content="PilotForge is your AI copilot for schedule strategy. FAR 117, rolling 100, green slip timing, reserve optimization, and PBS bidding — all via WhatsApp.">
-  <meta name="keywords" content="pilot schedule optimization, FAR 117, rolling 100, green slip, PBS bidding, reserve strategy, airline pilot tools, flight time tracking, duty time calculator, pilot pay optimization">
-  <meta property="og:title" content="PilotForge — AI Schedule Strategy for Airline Pilots">
-  <meta property="og:description" content="Your AI copilot for FAR 117, rolling 100, green slip timing, and reserve strategy. Ask anything via WhatsApp.">
+  <title>PilotForge — Tools for Airline Pilots</title>
+  <meta name="description" content="PilotForge builds AI-powered tools for airline pilots. Atlas for schedule strategy via WhatsApp. ZuluRoam for circadian optimization on iOS.">
+  <meta property="og:title" content="PilotForge — Tools for Airline Pilots">
+  <meta property="og:description" content="Schedule strategy. Circadian optimization. Built by a pilot, for pilots.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://pilotforge.ltd">
-  <meta property="og:image" content="https://pilotforge.ltd/og-image.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
   <meta property="og:site_name" content="PilotForge">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="PilotForge — AI Schedule Strategy for Airline Pilots">
-  <meta name="twitter:description" content="Your AI copilot for FAR 117, rolling 100, green slip timing, and reserve strategy. Ask anything via WhatsApp.">
-  <meta name="twitter:image" content="https://pilotforge.ltd/og-image.png">
-  <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://pilotforge.ltd">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "PilotForge",
-    "applicationCategory": "BusinessApplication",
-    "operatingSystem": "WhatsApp",
-    "description": "AI-powered schedule strategy assistant for airline pilots.",
-    "offers": [
-      {
-        "@type": "Offer",
-        "name": "Jumpseat",
-        "price": "9.99",
-        "priceCurrency": "USD",
-        "priceValidUntil": "2027-12-31"
-      },
-      {
-        "@type": "Offer",
-        "name": "Copilot",
-        "price": "19.99",
-        "priceCurrency": "USD",
-        "priceValidUntil": "2027-12-31"
-      },
-      {
-        "@type": "Offer",
-        "name": "Captain",
-        "price": "29.99",
-        "priceCurrency": "USD",
-        "priceValidUntil": "2027-12-31"
-      }
-    ]
-  }
-  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #000000;
-      --bg-elevated: #0a0a0a;
       --bg-card: #111111;
       --bg-card-hover: #1a1a1a;
-      --surface: #1d1d1f;
       --text-primary: #f5f5f7;
       --text-secondary: #86868b;
       --text-tertiary: #6e6e73;
       --accent: #4a9eda;
       --accent-hover: #5ab0f0;
-      --accent-glow: rgba(74, 158, 218, 0.12);
-      --red: #C8102E;
-      --red-hover: #e01535;
       --border: rgba(255, 255, 255, 0.08);
       --border-hover: rgba(255, 255, 255, 0.15);
       --radius: 20px;
       --radius-sm: 12px;
     }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Helvetica Neue', sans-serif;
       background: var(--bg);
       color: var(--text-primary);
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
     }
 
-    /* ─── NAV ─── */
+    /* Nav */
     nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 100;
-      background: rgba(0, 0, 0, 0.72);
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(0,0,0,0.72);
       backdrop-filter: saturate(180%) blur(20px);
       -webkit-backdrop-filter: saturate(180%) blur(20px);
       border-bottom: 1px solid var(--border);
-      padding: 0 24px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      padding: 0 24px; height: 48px;
+      display: flex; align-items: center; justify-content: space-between;
     }
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
-    .nav-brand img {
-      height: 28px;
-      width: auto;
-      border-radius: 6px;
-    }
-    .nav-brand span {
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      letter-spacing: -0.2px;
-    }
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      align-items: center;
-    }
-    .nav-links a {
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-size: 0.82rem;
-      font-weight: 400;
-      transition: color 0.2s;
-    }
+    .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-brand img { height: 28px; border-radius: 6px; }
+    .nav-brand span { font-size: 1.05rem; font-weight: 600; color: var(--text-primary); }
+    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
     .nav-links a:hover { color: var(--text-primary); }
-    .nav-cta {
-      background: var(--accent) !important;
-      color: white !important;
-      padding: 6px 16px;
-      border-radius: 980px;
-      font-size: 0.82rem !important;
-      font-weight: 500 !important;
-      transition: background 0.2s !important;
-    }
-    .nav-cta:hover { background: var(--accent-hover) !important; }
 
-    /* ─── HERO ─── */
+    /* Hero */
     .hero {
-      padding: 120px 24px 80px;
+      padding: 140px 24px 100px;
       text-align: center;
-      position: relative;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
     }
     .hero-video-container {
-      width: 200px;
-      height: auto;
-      margin: 0 auto 48px;
-      border-radius: 20px;
-      overflow: hidden;
+      width: 200px; margin: 0 auto 48px; border-radius: 20px; overflow: hidden;
     }
-    .hero-video-container video {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    .hero-eyebrow {
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: var(--accent);
-      letter-spacing: 0.02em;
-      margin-bottom: 16px;
-    }
+    .hero-video-container video { width: 100%; height: auto; display: block; }
     .hero h1 {
-      font-size: 3.5rem;
-      font-weight: 700;
-      letter-spacing: -0.025em;
-      line-height: 1.1;
-      margin-bottom: 20px;
-      max-width: 800px;
+      font-size: 3.5rem; font-weight: 700; letter-spacing: -0.025em;
+      line-height: 1.1; margin-bottom: 20px; max-width: 800px;
     }
     .hero .tagline {
-      font-size: 1.25rem;
-      font-weight: 400;
-      color: var(--text-secondary);
-      max-width: 600px;
-      margin: 0 auto 40px;
-      line-height: 1.6;
-    }
-    .hero-actions {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--accent);
-      color: white;
-      padding: 14px 32px;
-      border-radius: 980px;
-      font-size: 1rem;
-      font-weight: 500;
-      text-decoration: none;
-      transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
-      border: none;
-      cursor: pointer;
-    }
-    .btn-primary:hover {
-      background: var(--accent-hover);
-      transform: scale(1.02);
-    }
-    .btn-ghost {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: transparent;
-      color: var(--accent);
-      padding: 14px 32px;
-      border-radius: 980px;
-      font-size: 1rem;
-      font-weight: 500;
-      text-decoration: none;
-      transition: all 0.3s;
-    }
-    .btn-ghost:hover { color: var(--accent-hover); }
-
-    /* ─── SECTIONS ─── */
-    .section {
-      max-width: 1024px;
-      margin: 0 auto;
-      padding: 100px 24px;
-    }
-    .section-header {
-      text-align: center;
-      margin-bottom: 60px;
-    }
-    .section-header .eyebrow {
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 12px;
-    }
-    .section-header h2 {
-      font-size: 2.8rem;
-      font-weight: 700;
-      letter-spacing: -0.025em;
-      line-height: 1.1;
-      margin-bottom: 16px;
-    }
-    .section-header p {
-      color: var(--text-secondary);
-      font-size: 1.15rem;
-      max-width: 560px;
-      margin: 0 auto;
-      line-height: 1.6;
+      font-size: 1.25rem; color: var(--text-secondary);
+      max-width: 600px; margin: 0 auto 60px; line-height: 1.6;
     }
 
-    /* ─── EXAMPLES (Chat Bubbles) ─── */
-    .examples-card {
-      max-width: 680px;
-      margin: 0 auto;
+    /* Product Cards */
+    .products {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 24px; max-width: 900px; width: 100%; padding: 0 24px;
     }
-    .chat-pair {
-      margin-bottom: 32px;
-    }
-    .chat-q, .chat-a {
-      padding: 16px 20px;
-      border-radius: 18px;
-      font-size: 0.92rem;
-      line-height: 1.6;
-      max-width: 85%;
-    }
-    .chat-q {
-      background: var(--accent);
-      color: white;
-      margin-left: auto;
-      margin-bottom: 10px;
-      border-bottom-right-radius: 6px;
-      font-weight: 500;
-    }
-    .chat-a {
-      background: var(--bg-card);
-      color: var(--text-secondary);
-      border: 1px solid var(--border);
-      margin-right: auto;
-      border-bottom-left-radius: 6px;
-    }
-
-    /* ─── FEATURES ─── */
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-    .feature-card {
+    .product-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 32px 28px;
+      padding: 48px 36px;
+      text-decoration: none;
       transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+      display: flex; flex-direction: column;
     }
-    .feature-card:hover {
+    .product-card:hover {
       background: var(--bg-card-hover);
       border-color: var(--border-hover);
-      transform: translateY(-2px);
+      transform: translateY(-4px);
     }
-    .feature-icon {
-      font-size: 2rem;
+    .product-icon { font-size: 2.5rem; margin-bottom: 20px; }
+    .product-name {
+      font-size: 1.6rem; font-weight: 700; color: var(--text-primary);
+      margin-bottom: 4px; letter-spacing: -0.02em;
+    }
+    .product-tagline {
+      font-size: 0.95rem; color: var(--accent); font-weight: 500;
       margin-bottom: 16px;
     }
-    .feature-card h3 {
-      font-size: 1.05rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-      letter-spacing: -0.01em;
+    .product-desc {
+      font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7;
+      margin-bottom: 24px; flex: 1;
     }
-    .feature-card p {
-      font-size: 0.88rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
+    .product-cta {
+      font-size: 0.88rem; color: var(--accent); font-weight: 500;
+      display: flex; align-items: center; gap: 6px;
     }
-
-    /* ─── PRICING ─── */
-    .price-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    @media (max-width: 900px) {
-      .price-grid { grid-template-columns: 1fr; max-width: 440px; }
-    }
-    .price-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 40px 28px;
-      text-align: center;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      transition: border 200ms ease, transform 200ms ease;
-    }
-    .price-card:hover {
-      border-color: var(--border-hover);
-      transform: translateY(-2px);
-    }
-    .price-card.featured {
-      border-color: var(--accent);
-      background: linear-gradient(180deg, rgba(74,158,218,0.06) 0%, var(--bg-card) 60%);
-    }
-    .price-badge {
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--accent);
-      color: #000;
-      padding: 4px 14px;
+    .product-cta::after { content: "›"; font-size: 1.1rem; }
+    .product-badge {
+      display: inline-block;
+      background: rgba(74, 158, 218, 0.12);
+      color: var(--accent);
+      padding: 3px 10px;
       border-radius: 980px;
       font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
+      font-weight: 600;
       text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 16px;
+      width: fit-content;
     }
-    .price-name {
-      font-size: 1.35rem;
-      font-weight: 700;
-      margin-bottom: 4px;
+
+    /* Features Strip */
+    .features-strip {
+      max-width: 900px; margin: 0 auto;
+      padding: 80px 24px;
+      text-align: center;
+    }
+    .features-strip h2 {
+      font-size: 2rem; font-weight: 700; margin-bottom: 40px;
       letter-spacing: -0.02em;
     }
-    .price-tagline {
-      color: var(--text-tertiary);
-      font-size: 0.82rem;
-      margin-bottom: 20px;
-      min-height: 1.2em;
+    .feature-row {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 32px; text-align: center;
     }
-    .price-amount {
-      font-size: 2.8rem;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      margin: 8px 0 2px;
+    .feature-item h3 {
+      font-size: 0.95rem; font-weight: 600; margin-bottom: 6px;
     }
-    .price-amount span {
-      font-size: 1rem;
-      font-weight: 400;
-      color: var(--text-tertiary);
-    }
-    .price-annual {
-      color: var(--accent);
-      font-size: 0.82rem;
-      font-weight: 600;
-      margin-bottom: 24px;
-      min-height: 1.2em;
-    }
-    .price-note {
-      color: var(--text-tertiary);
-      font-size: 0.8rem;
-      margin-bottom: 20px;
-      min-height: 1.2em;
-    }
-    .price-features {
-      list-style: none;
-      text-align: left;
-      margin: 0 0 28px;
-      flex: 1;
-    }
-    .price-features li {
-      padding: 10px 0;
-      font-size: 0.86rem;
-      color: var(--text-secondary);
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-    }
-    .price-features li:last-child { border-bottom: none; }
-    .price-features li::before {
-      content: "✓";
-      color: var(--accent);
-      font-weight: 700;
-      font-size: 0.85rem;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-    .price-features li.muted { color: var(--text-tertiary); }
-    .price-features li.muted::before {
-      content: "—";
-      color: var(--text-tertiary);
+    .feature-item p {
+      font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;
     }
 
-    /* ─── COMPARE ─── */
-    .compare-wrap {
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-    .compare-table {
-      width: 100%;
-      border-collapse: collapse;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      overflow: hidden;
-      min-width: 600px;
-    }
-    .compare-table th {
-      background: var(--surface);
-      color: var(--text-secondary);
-      padding: 14px 20px;
-      text-align: left;
-      font-size: 0.78rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-    .compare-table td {
-      padding: 16px 20px;
-      border-bottom: 1px solid var(--border);
-      font-size: 0.88rem;
-      color: var(--text-secondary);
-    }
-    .compare-table tr:last-child td { border-bottom: none; }
-    .compare-table td:first-child { color: var(--text-primary); font-weight: 500; }
-
-    /* ─── FAQ ─── */
-    .faq-item {
-      border-bottom: 1px solid var(--border);
-      padding: 24px 0;
-    }
-    .faq-item:last-child { border-bottom: none; }
-    .faq-item h3 {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-      letter-spacing: -0.01em;
-    }
-    .faq-item p {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      line-height: 1.7;
-    }
-
-    /* ─── BOTTOM CTA ─── */
-    .bottom-cta {
-      text-align: center;
-      padding: 100px 24px 120px;
-    }
-    .bottom-cta h2 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      letter-spacing: -0.025em;
-      margin-bottom: 16px;
-    }
-    .bottom-cta p {
-      color: var(--text-secondary);
-      font-size: 1.1rem;
-      margin-bottom: 32px;
-      max-width: 480px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    /* ─── FOOTER ─── */
+    /* Footer */
     footer {
       border-top: 1px solid var(--border);
-      padding: 32px 24px;
-      text-align: center;
+      padding: 32px 24px; text-align: center;
     }
     footer .links {
-      display: flex;
-      gap: 24px;
-      justify-content: center;
-      margin-bottom: 16px;
+      display: flex; gap: 24px; justify-content: center; margin-bottom: 16px;
     }
-    footer a {
-      color: var(--text-tertiary);
-      text-decoration: none;
-      font-size: 0.82rem;
-      transition: color 0.2s;
-    }
+    footer a { color: var(--text-tertiary); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
     footer a:hover { color: var(--text-secondary); }
-    footer .copy {
-      color: var(--text-tertiary);
-      font-size: 0.78rem;
-    }
-    footer .disclaimer {
-      color: var(--text-tertiary);
-      font-size: 0.75rem;
-      margin-top: 12px;
-      opacity: 0.7;
-    }
+    footer .copy { color: var(--text-tertiary); font-size: 0.78rem; }
+    footer .disclaimer { color: var(--text-tertiary); font-size: 0.75rem; margin-top: 12px; opacity: 0.7; }
 
-    /* ─── RESPONSIVE ─── */
+    /* Responsive */
     @media (max-width: 768px) {
       .hero { padding: 100px 20px 60px; min-height: auto; }
       .hero h1 { font-size: 2.2rem; }
-      .hero .tagline { font-size: 1.05rem; }
+      .products { grid-template-columns: 1fr; }
+      .feature-row { grid-template-columns: 1fr; gap: 24px; }
       .hero-video-container { width: 150px; margin-bottom: 36px; }
-      .section { padding: 80px 20px; }
-      .section-header h2 { font-size: 2rem; }
-      .feature-grid { grid-template-columns: 1fr; }
-      .nav-links { gap: 16px; }
-      .nav-links a:not(.nav-cta) { display: none; }
-      .price-card { padding: 36px 28px; }
-      .bottom-cta h2 { font-size: 1.8rem; }
-      .chat-q, .chat-a { max-width: 95%; }
-    }
-
-    @media (min-width: 769px) and (max-width: 1024px) {
-      .feature-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
 <body>
 
-  <!-- Nav -->
   <nav>
     <a href="/" class="nav-brand">
       <img src="logo.jpg" alt="PilotForge">
       <span>PilotForge</span>
     </a>
     <div class="nav-links">
-      <a href="#features">Features</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#faq">FAQ</a>
-      <a href="https://wa.me/18335736743?text=Hi" class="nav-cta">Get Started</a>
+      <a href="atlas.html">Atlas</a>
+      <a href="zuluRoam.html">ZuluRoam</a>
+      <a href="terms.html">Terms</a>
     </div>
   </nav>
 
-  <!-- Hero -->
   <section class="hero">
     <div class="hero-video-container">
       <video autoplay muted loop playsinline>
@@ -586,264 +193,61 @@
         <img src="logo.jpg" alt="PilotForge Logo">
       </video>
     </div>
-    <p class="hero-eyebrow">AI Schedule Strategy</p>
-    <h1>Your copilot<br>for every schedule decision.</h1>
-    <p class="tagline">FAR 117 compliance. Rolling 100 tracking. Green slip timing. Reserve strategy. All via WhatsApp — no app required.</p>
-    <div class="hero-actions">
-      <a href="https://wa.me/18335736743?text=Hi" class="btn-primary">Start Free Trial</a>
-      <a href="#pricing" class="btn-ghost">See pricing ›</a>
+    <h1>Built by a pilot.<br>For pilots.</h1>
+    <p class="tagline">PilotForge builds tools that help airline pilots master their schedules, protect their rest, and fly smarter.</p>
+
+    <div class="products">
+      <a href="atlas.html" class="product-card">
+        <div class="product-icon">🧠</div>
+        <div class="product-name">Atlas</div>
+        <div class="product-tagline">Schedule Strategy AI</div>
+        <p class="product-desc">FAR 117 compliance. Rolling 100 tracking. Green slip timing. Reserve optimization. Pay calculations. All via WhatsApp — ask anything, get cited answers in seconds.</p>
+        <div class="product-cta">Learn more</div>
+      </a>
+
+      <a href="zuluRoam.html" class="product-card">
+        <div class="product-badge">Coming Soon</div>
+        <div class="product-icon">🌍</div>
+        <div class="product-name">ZuluRoam</div>
+        <div class="product-tagline">Own Every Time Zone</div>
+        <p class="product-desc">Science-backed circadian optimization for international pilots. Adaptive layover plans, Apple Watch integration, and real-time recovery tracking. iOS app.</p>
+        <div class="product-cta">Learn more</div>
+      </a>
     </div>
   </section>
 
-  <!-- Ask Atlas -->
-  <section class="section" style="border-top: 1px solid var(--border);">
-    <div class="section-header">
-      <p class="eyebrow">Meet Atlas</p>
-      <h2>Ask anything. Get cited answers.</h2>
-      <p>Real questions from real pilots — answered in seconds.</p>
-    </div>
-    <div class="examples-card">
-      <div class="chat-pair">
-        <div class="chat-q">What's my FDP limit for a 3-leg day reporting at 0600?</div>
-        <div class="chat-a">Per FAR §117.13 Table B, acclimated, 0500-0559 report: 3 segments = 12.0h FDP limit. Extension available per §117.19 up to 2 additional hours with PIC/SIC agreement.</div>
+  <section class="features-strip" style="border-top: 1px solid var(--border);">
+    <h2>Two products. One mission.</h2>
+    <div class="feature-row">
+      <div class="feature-item">
+        <h3>📋 Know Your Contract</h3>
+        <p>FAR 117, PWA, Scheduling Handbook — instant lookups with section citations.</p>
       </div>
-      <div class="chat-pair">
-        <div class="chat-q">Can I fit a 6-day trip starting May 20 into my bucket?</div>
-        <div class="chat-a">Day-by-day analysis: your bucket peaks at 98.0h on May 22. The trip fits — 2h margin. Old A157 hours drop off May 2-7, creating room as the new trip's block accumulates.</div>
+      <div class="feature-item">
+        <h3>📊 Master Your Schedule</h3>
+        <p>Rolling 100 tracking, bucket projections, green slip windows, bid strategy.</p>
       </div>
-      <div class="chat-pair">
-        <div class="chat-q">I was rerouted yesterday. They're trying to reroute me again. Legal?</div>
-        <div class="chat-a">Per PWA Section 23 L., after a reroute the Company must return you to your original rotation or release you. A second consecutive reroute is not how Section 23 L. works. Don't acknowledge the CNO — call scheduling and assert your rights.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Features -->
-  <section class="section" id="features" style="border-top: 1px solid var(--border);">
-    <div class="section-header">
-      <p class="eyebrow">Capabilities</p>
-      <h2>Everything in one conversation.</h2>
-      <p>No app to download. No login to remember. Just text.</p>
-    </div>
-    <div class="feature-grid">
-      <div class="feature-card">
-        <div class="feature-icon">🧠</div>
-        <h3>Strategy Analysis</h3>
-        <p>Reserve optimization, green slip timing, bucket management, and bid strategy — AI that thinks like an experienced line pilot.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">📋</div>
-        <h3>Contract Lookup</h3>
-        <p>Instant answers with section citations. FAR 117, PWA, Scheduling Handbook — searchable by natural language.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">📊</div>
-        <h3>Rolling 100 Tracker</h3>
-        <p>Upload your schedule, get day-by-day bucket projections with drop-off dates and green slip windows.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">💰</div>
-        <h3>Pay Optimization</h3>
-        <p>Green slip math, premium pay, reserve guarantee analysis — with current pay rates.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">📱</div>
-        <h3>WhatsApp Native</h3>
-        <p>Works from your phone, iPad, or layover hotel WiFi. Upload PDFs, get answers. No app store.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🔒</div>
-        <h3>Private & Secure</h3>
-        <p>Per-pilot data isolation. Your schedule and strategy stay yours. BYOD — you upload your own documents.</p>
+      <div class="feature-item">
+        <h3>😴 Protect Your Rest</h3>
+        <p>Circadian coaching, sleep optimization, wearable data — science, not guesswork.</p>
       </div>
     </div>
   </section>
 
-  <!-- Pricing -->
-  <section class="section" id="pricing" style="border-top: 1px solid var(--border);">
-    <div class="section-header">
-      <p class="eyebrow">Pricing</p>
-      <h2>Pick your seat.</h2>
-      <p class="section-sub" style="color:var(--text-secondary); max-width:600px; margin:12px auto 0; font-size:0.95rem;">Start free. Upgrade when you're ready. One green slip pays for the whole year.</p>
-    </div>
-    <div class="price-grid">
-
-      <!-- Jumpseat -->
-      <div class="price-card">
-        <div class="price-name">Jumpseat</div>
-        <div class="price-tagline">Rides along. Answers the basics.</div>
-        <div class="price-amount">$9.99<span> /mo</span></div>
-        <div class="price-annual">&nbsp;</div>
-        <div class="price-note">3 free queries · No card to start</div>
-        <ul class="price-features">
-          <li>20 queries per month</li>
-          <li>FAR 117 + contract rule lookups</li>
-          <li>Rolling 100 & bucket tracking</li>
-          <li>Pay calculations</li>
-          <li>Constraint tracking</li>
-          <li>3 courtesy strategy questions/mo</li>
-        </ul>
-        <a href="https://wa.me/18335736743?text=Start%20Jumpseat" class="btn-ghost" style="width:100%; justify-content:center;">Start Free</a>
-      </div>
-
-      <!-- Copilot (featured) -->
-      <div class="price-card featured">
-        <div class="price-badge">Most Popular</div>
-        <div class="price-name">Copilot</div>
-        <div class="price-tagline">Your active decision partner.</div>
-        <div class="price-amount">$19.99<span> /mo</span></div>
-        <div class="price-annual">&nbsp;</div>
-        <div class="price-note">Cancel anytime · No query cap</div>
-        <ul class="price-features">
-          <li><strong>Unlimited</strong> rule queries</li>
-          <li><strong>Unlimited</strong> strategy analysis</li>
-          <li>Bid package parsing & rotation search</li>
-          <li>Green slip timing & bucket arbitrage</li>
-          <li>Reserve optimization & trip drops</li>
-          <li>If/then scenario modeling</li>
-          <li>All pay calculations</li>
-          <li>50 deep Opus analyses/mo</li>
-        </ul>
-        <a href="https://wa.me/18335736743?text=Upgrade%20Copilot" class="btn-primary" style="width:100%; justify-content:center;">Go Copilot</a>
-      </div>
-
-      <!-- Captain -->
-      <div class="price-card">
-        <div class="price-name">Captain</div>
-        <div class="price-tagline">Full command. No limits.</div>
-        <div class="price-amount">$29.99<span> /mo</span></div>
-        <div class="price-annual">or $239.99/yr — save 33%</div>
-        <div class="price-note">Captain for the price of Copilot</div>
-        <ul class="price-features">
-          <li>Everything in Copilot</li>
-          <li><strong>Unlimited</strong> deep strategy (no Opus cap)</li>
-          <li><strong>Unlimited</strong> bid package parsing</li>
-          <li>Priority response queue</li>
-          <li>Multi-month projection analysis</li>
-          <li>Upgrade/downgrade pay arbitrage</li>
-          <li>Green slip + displacement modeling</li>
-          <li>Annual option: lock in 33% savings</li>
-        </ul>
-        <a href="https://wa.me/18335736743?text=Upgrade%20Captain" class="btn-ghost" style="width:100%; justify-content:center;">Take Command</a>
-      </div>
-
-    </div>
-    <p style="text-align:center; margin-top:32px; color:var(--text-tertiary); font-size:0.82rem; max-width:640px; margin-left:auto; margin-right:auto;">
-      Every plan starts with 3 free queries. No credit card. Upgrade, downgrade, or cancel any time via WhatsApp — just text <strong style="color:var(--text-secondary)">UPGRADE</strong> or <strong style="color:var(--text-secondary)">CANCEL</strong>.
-    </p>
+  <section style="text-align: center; padding: 60px 24px 80px; border-top: 1px solid var(--border);">
+    <h2 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 16px;">Independent. Private. Pilot-first.</h2>
+    <p style="color: var(--text-secondary); font-size: 0.95rem; max-width: 560px; margin: 0 auto; line-height: 1.7;">PilotForge LLC is not affiliated with any airline, union, or scheduling provider. Your data stays yours. BYOD model — we never connect to airline systems.</p>
   </section>
 
-  <!-- Compare -->
-  <section class="section" style="border-top: 1px solid var(--border);">
-    <div class="section-header">
-      <h2>How it compares.</h2>
-    </div>
-    <div class="compare-wrap">
-      <table class="compare-table">
-        <tr>
-          <th>Feature</th>
-          <th>PilotForge</th>
-          <th>PBS Bidding Services</th>
-          <th>Spreadsheets</th>
-        </tr>
-        <tr>
-          <td>Natural language questions</td>
-          <td><strong style="color:var(--accent)">✅ Via WhatsApp</strong></td>
-          <td>❌</td>
-          <td>❌</td>
-        </tr>
-        <tr>
-          <td>Post-award strategy</td>
-          <td><strong style="color:var(--accent)">✅ GS timing, reserve opt.</strong></td>
-          <td>❌ Pre-award only</td>
-          <td>❌</td>
-        </tr>
-        <tr>
-          <td>FAR 117 + contract lookup</td>
-          <td><strong style="color:var(--accent)">✅ With citations</strong></td>
-          <td>❌</td>
-          <td>❌</td>
-        </tr>
-        <tr>
-          <td>Rolling 100 day-by-day</td>
-          <td><strong style="color:var(--accent)">✅ Automatic</strong></td>
-          <td>❌</td>
-          <td>⚠️ Manual</td>
-        </tr>
-        <tr>
-          <td>Pay optimization</td>
-          <td><strong style="color:var(--accent)">✅ AI-powered</strong></td>
-          <td>❌</td>
-          <td>⚠️ Basic</td>
-        </tr>
-        <tr>
-          <td>Price</td>
-          <td><strong style="color:var(--text-primary)">From $9.99/mo</strong></td>
-          <td>$50-100/yr</td>
-          <td>Free (+ your time)</td>
-        </tr>
-      </table>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="section" id="faq" style="border-top: 1px solid var(--border);">
-    <div class="section-header">
-      <h2>Questions.</h2>
-    </div>
-    <div style="max-width:680px; margin:0 auto;">
-      <div class="faq-item">
-        <h3>Is PilotForge affiliated with any airline or union?</h3>
-        <p>No. PilotForge is an independent tool built by a pilot. Not affiliated with any airline, pilot union, the FAA, or any scheduling provider.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Is this legal advice?</h3>
-        <p>No. PilotForge is informational only. Responses cite specific contract sections and regulations, but the PIC is solely responsible for compliance. Always verify with Crew Scheduling.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Does PilotForge interface with airline systems?</h3>
-        <p>No. PilotForge doesn't connect to any airline system. BYOD model — you upload documents you already have. No access to any airline crew management or scheduling application.</p>
-      </div>
-      <div class="faq-item">
-        <h3>How does the free trial work?</h3>
-        <p>Text our number and complete a quick profile. First 3 questions are free — no credit card.</p>
-      </div>
-      <div class="faq-item">
-        <h3>What's the difference between Jumpseat, Copilot, and Captain?</h3>
-        <p><strong>Jumpseat ($9.99/mo):</strong> Rule lookups, FAR 117, contract sections, pay rates. 20 queries/mo plus 3 courtesy strategy questions. Good for checking facts.</p>
-        <p><strong>Copilot ($19.99/mo):</strong> Unlimited queries. Full strategy analysis — bucket planning, trip selection, green slip timing, bid package parsing. Good for active decision-making.</p>
-        <p><strong>Captain ($29.99/mo or $239.99/yr):</strong> Everything Copilot plus unlimited deep strategy (no Opus caps), multi-month projections, and priority. Best for power users and annual commits.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Can I change tiers or cancel?</h3>
-        <p>Yes. Text <strong>UPGRADE</strong>, <strong>DOWNGRADE</strong>, or <strong>CANCEL</strong> any time. Monthly plans have no commitment. Annual Captain is billed yearly at $239.99 — prorated refund if you cancel early.</p>
-      </div>
-      <div class="faq-item">
-        <h3>How do I check my usage?</h3>
-        <p>Text <strong>MYTIER</strong> to see your current plan and this month's query count.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Does it work for other airlines?</h3>
-        <p>Currently optimized for one major U.S. carrier. Expansion to additional airlines is on the roadmap.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Bottom CTA -->
-  <section class="bottom-cta" style="border-top: 1px solid var(--border);">
-    <h2>Ready to fly smarter?</h2>
-    <p>Three free questions. No credit card. Just text.</p>
-    <a href="https://wa.me/18335736743?text=Hi" class="btn-primary">Start Free Trial</a>
-  </section>
-
-  <!-- Footer -->
   <footer>
     <div class="links">
+      <a href="atlas.html">Atlas</a>
+      <a href="zuluRoam.html">ZuluRoam</a>
       <a href="privacy.html">Privacy</a>
       <a href="terms.html">Terms</a>
       <a href="mailto:info@pilotforge.ltd">Contact</a>
     </div>
-    <p class="copy">&copy; 2026 PilotForge LLC · Sheridan, WY · info@pilotforge.ltd</p>
+    <p class="copy">&copy; 2026 PilotForge LLC &middot; Sheridan, WY &middot; info@pilotforge.ltd</p>
     <p class="disclaimer">Informational reference only — not operational guidance. Not affiliated with any airline or labor organization.</p>
   </footer>
 
