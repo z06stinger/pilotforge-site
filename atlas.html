@@ -434,10 +434,11 @@
       flex-shrink: 0;
       margin-top: 1px;
     }
-    .price-features li.muted { color: var(--text-tertiary); }
+    .price-features li.muted { color: var(--text-tertiary); opacity: 0.7; }
     .price-features li.muted::before {
-      content: "—";
-      color: var(--text-tertiary);
+      content: "✗";
+      color: #ff453a;
+      font-weight: 700;
     }
 
     /* ─── COMPARE ─── */
@@ -550,6 +551,7 @@
       .section { padding: 80px 20px; }
       .section-header h2 { font-size: 2rem; }
       .feature-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr !important; }
       .nav-links { gap: 16px; }
       .nav-links a:not(.nav-cta) { display: none; }
       .price-card { padding: 36px 28px; }
@@ -591,9 +593,40 @@
     <p class="hero-eyebrow">Atlas by PilotForge</p>
     <h1>Your copilot<br>for every schedule decision.</h1>
     <p class="tagline">FAR 117 compliance. Rolling 100 tracking. Green slip timing. Reserve strategy. All via WhatsApp — no app required.</p>
+    <div style="background: rgba(74,158,218,0.08); border: 1px solid rgba(74,158,218,0.2); border-radius: 16px; padding: 24px 32px; margin-bottom: 32px; max-width: 420px;">
+      <div style="font-size: 0.9rem; color: #86868b; margin-bottom: 6px;">Save the number. Text <strong style="color:#f5f5f7">Hi</strong>. That's it.</div>
+      <div style="font-size: 1.5rem; font-weight: 700; color: #4a9eda; letter-spacing: 0.02em; margin-bottom: 2px;">(833) 57-FORGE</div>
+      <div style="font-size: 0.85rem; color: #6e6e73;">(833) 573-6743</div>
+      <div style="font-size: 0.78rem; color: #6e6e73; margin-top: 8px;">3 free questions · No credit card · No app to download</div>
+    </div>
     <div class="hero-actions">
-      <a href="https://wa.me/18335736743?text=Hi" class="btn-primary">Start Free Trial</a>
+      <a href="https://wa.me/18335736743?text=Hi" class="btn-primary" style="background:#25D366;box-shadow:0 4px 20px rgba(37,211,102,0.3);"><svg style="width:20px;height:20px;flex-shrink:0;margin-right:6px;" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.34 0-4.508-.803-6.222-2.149l-.435-.344-3.178 1.065 1.065-3.178-.344-.435A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>Text Atlas on WhatsApp</a>
       <a href="#pricing" class="btn-ghost">See pricing ›</a>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section" style="border-top: 1px solid var(--border); padding-top: 80px; padding-bottom: 80px;">
+    <div class="section-header">
+      <p class="eyebrow">Get started in 30 seconds</p>
+      <h2>Three steps. That's it.</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 800px; margin: 0 auto; text-align: center;">
+      <div>
+        <div style="font-size: 2.5rem; margin-bottom: 12px;">📱</div>
+        <h3 style="font-size: 1rem; font-weight: 600; margin-bottom: 6px;">1. Save the number</h3>
+        <p style="font-size: 0.88rem; color: var(--text-secondary);">(833) 573-6743 — or tap "Open in WhatsApp" above.</p>
+      </div>
+      <div>
+        <div style="font-size: 2.5rem; margin-bottom: 12px;">👋</div>
+        <h3 style="font-size: 1rem; font-weight: 600; margin-bottom: 6px;">2. Text "Hi"</h3>
+        <p style="font-size: 0.88rem; color: var(--text-secondary);">Atlas sets up your profile in under a minute. Base, fleet, seat — done.</p>
+      </div>
+      <div>
+        <div style="font-size: 2.5rem; margin-bottom: 12px;">🧠</div>
+        <h3 style="font-size: 1rem; font-weight: 600; margin-bottom: 6px;">3. Ask anything</h3>
+        <p style="font-size: 0.88rem; color: var(--text-secondary);">Your first 3 questions are free. No credit card. No strings.</p>
+      </div>
     </div>
   </section>
 
@@ -727,10 +760,12 @@
           <li>FAR 117 + contract rule lookups</li>
           <li>Rolling 100 & bucket tracking</li>
           <li>Pay calculations</li>
-          <li>Constraint tracking</li>
           <li>3 courtesy strategy questions/mo</li>
-          <li class="muted">Bid package analysis</li>
-          <li class="muted">Unlimited strategy</li>
+          <li class="muted">Bid package parsing</li>
+          <li class="muted">Unlimited strategy analysis</li>
+          <li class="muted">Deep strategy (Opus-level)</li>
+          <li class="muted">Multi-month projections</li>
+          <li class="muted">Priority response queue</li>
         </ul>
         <a href="https://buy.stripe.com/eVqaEW8tc7Ss6se0hQ8Ra02" class="btn-ghost" style="width:100%; justify-content:center;">Start Free</a>
       </div>
@@ -740,7 +775,7 @@
         <div class="price-badge">Most Popular</div>
         <div class="price-name">Copilot</div>
         <div class="price-tagline">Your active decision partner.</div>
-        <div class="price-amount">$19.99<span> /mo</span></div>
+        <div class="price-amount">$20<span> /mo</span></div>
         <div class="price-annual">&nbsp;</div>
         <div class="price-note">Cancel anytime · No query cap</div>
         <ul class="price-features">
@@ -750,8 +785,10 @@
           <li>Green slip timing & bucket arbitrage</li>
           <li>Reserve optimization & trip drops</li>
           <li>If/then scenario modeling</li>
-          <li>All pay calculations</li>
           <li>20 deep strategy analyses/mo</li>
+          <li class="muted">Unlimited deep strategy</li>
+          <li class="muted">Multi-month projections</li>
+          <li class="muted">Priority response queue</li>
         </ul>
         <a href="https://buy.stripe.com/5kQ28q24OgoY2bYfcK8Ra03" class="btn-primary" style="width:100%; justify-content:center;">Go Copilot</a>
       </div>
@@ -760,18 +797,18 @@
       <div class="price-card">
         <div class="price-name">Captain</div>
         <div class="price-tagline">Full command. No limits.</div>
-        <div class="price-amount">$29.99<span> /mo</span></div>
+        <div class="price-amount">$30<span> /mo</span></div>
         <div class="price-annual">or $240/yr — save 33%</div>
         <div class="price-note">Captain for the price of Copilot</div>
         <ul class="price-features">
           <li>Everything in Copilot</li>
-          <li><strong>Unlimited</strong> deep strategy (no Opus cap)</li>
+          <li><strong>Unlimited</strong> deep strategy (no cap)</li>
           <li><strong>Unlimited</strong> bid package parsing</li>
-          <li>Priority response queue</li>
           <li>Multi-month projection analysis</li>
           <li>Upgrade/downgrade pay arbitrage</li>
           <li>Green slip + displacement modeling</li>
-          <li>Annual option: lock in 33% savings</li>
+          <li>Priority response queue</li>
+          <li>Annual option: $240/yr (save 33%)</li>
         </ul>
         <a href="https://buy.stripe.com/dRmcN4aBk2y8cQC5Ca8Ra08" class="btn-ghost" style="width:100%; justify-content:center;">Take Command</a>
       </div>
@@ -860,7 +897,7 @@
       <div class="faq-item">
         <h3>What's the difference between Jumpseat, Copilot, and Captain?</h3>
         <p><strong>Jumpseat ($9.99/mo):</strong> Rule lookups, FAR 117, contract sections, pay rates. 10 queries/mo plus 3 courtesy strategy questions. Good for checking facts.</p>
-        <p><strong>Copilot ($19.99/mo):</strong> Unlimited queries. Full strategy analysis — bucket planning, trip selection, green slip timing, bid package parsing. Good for active decision-making.</p>
+        <p><strong>Copilot ($20/mo):</strong> Unlimited queries. Full strategy analysis — bucket planning, trip selection, green slip timing, bid package parsing. Good for active decision-making.</p>
         <p><strong>Captain ($30/mo or $240/yr):</strong> Everything Copilot plus unlimited deep strategy (no Opus caps), multi-month projections, and priority. Best for power users and annual commits.</p>
       </div>
       <div class="faq-item">
@@ -882,7 +919,9 @@
   <section class="bottom-cta" style="border-top: 1px solid var(--border);">
     <h2>Ready to fly smarter?</h2>
     <p>Three free questions. No credit card. Just text.</p>
-    <a href="https://wa.me/18335736743?text=Hi" class="btn-primary">Start Free Trial</a>
+    <div style="font-size: 1.3rem; font-weight: 700; color: var(--accent); margin-bottom: 8px;">(833) 57-FORGE</div>
+    <div style="font-size: 0.85rem; color: var(--text-tertiary); margin-bottom: 24px;">(833) 573-6743 on WhatsApp</div>
+    <a href="https://wa.me/18335736743?text=Hi" class="btn-primary" style="background:#25D366;box-shadow:0 4px 20px rgba(37,211,102,0.3);"><svg style="width:20px;height:20px;flex-shrink:0;margin-right:6px;" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.34 0-4.508-.803-6.222-2.149l-.435-.344-3.178 1.065 1.065-3.178-.344-.435A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>Text Atlas on WhatsApp</a>
   </section>
 
   <!-- Footer -->
